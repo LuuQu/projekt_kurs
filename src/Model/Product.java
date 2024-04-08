@@ -45,7 +45,9 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
+    public Product copy() {
+        return new Product(this.id,this.name,this.price,this.amount);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
