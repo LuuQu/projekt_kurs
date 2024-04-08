@@ -60,4 +60,11 @@ public class Product {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+    @Override
+    public String toString() {
+        return "Nazwa produktu: " + name + "\n"
+                +"Cena: " + price + "\n"
+                +"Ilość: " + amount + "\n"
+                +"Suma: " + price * amount;
+    }
 }

@@ -1,4 +1,4 @@
-package Controllers;
+package Model;
 
 import Enums.ComputerComponents;
 import Model.*;

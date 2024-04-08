@@ -38,4 +38,18 @@ public class Cart {
         productInList.get().setAmount(productInList.get().getAmount() - amount);
         return true;
     }
+    public List<Product> getProductList() {
+        return productList;
+    }
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Zawartość koszyka:");
+        stringBuilder.append("\n");
+        for(Product p : productList) {
+            stringBuilder.append(p.toString());
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }
