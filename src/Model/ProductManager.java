@@ -58,6 +58,18 @@ public class ProductManager {
         }
         return false;
     }
+    public int getAmountOfProduct(Product product) throws Exception {
+        return this.getAmountOfProduct(product.getId());
+    }
+    public int getAmountOfProduct(int productId) throws Exception {
+        var product = productList.stream()
+                .filter(item -> item.getId() == productId)
+                .findFirst();
+        if(product.isEmpty()) {
+            throw new Exception("Produkt nie istnieje");
+        }
+        return product.get().getAmount();
+    }
     public boolean updateProduct(int id, String name, float price, int amount) {
         return this.updateProduct(new Product(id,name,price,amount));
     }
@@ -66,7 +78,27 @@ public class ProductManager {
         return this.updateProduct(id,name,price,amount);
     }
     public boolean updateProduct(Product product) {
+        productList.stream()
+                .filter(item -> item.getId() == product.getId())
+                .findFirst()
+                .ifPresent(item -> {
+                    item.setName(product.getName());
+                    item.setPrice(product.getPrice());
+                    item.setAmount(product.getAmount());
+                });
         return true;
+    }
+    public void removeAmountOfProduct(Product product) {
+        productList.stream()
+                .filter(item -> item.getId() == product.getId())
+                .findFirst()
+                .ifPresent(item -> item.setAmount(item.getAmount() - product.getAmount()));
+    }
+    public void addAmountOfProduct(Product product) {
+        productList.stream()
+                .filter(item -> item.getId() == product.getId())
+                .findFirst()
+                .ifPresent(item -> item.setAmount(item.getAmount() + product.getAmount()));
     }
     public boolean updateProduct(Product product,ComputerComponents component) {
         computerComponentsHashMap.put(product.getId(), component);
