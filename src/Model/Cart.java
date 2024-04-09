@@ -27,6 +27,9 @@ public class Cart {
     public boolean removeProduct(Product product) {
         return productList.remove(product);
     }
+    public boolean removeProduct(int productId) {
+        return productList.remove(productList.get(productId));
+    }
     public boolean removeProduct(Product product, int amount) {
         var productInList = productList.stream().filter(item -> item.getId() == product.getId()).findFirst();
         if(productInList.isEmpty()) {

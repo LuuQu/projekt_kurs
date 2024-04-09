@@ -14,6 +14,9 @@ public class Person {
         this.login = login;
         this.password = password;
     }
+    public Person(PersonBuilder personBuilder) {
+        this(personBuilder.name, personBuilder.lastName, personBuilder.login, personBuilder.password);
+    }
     public String getName() {
         return name;
     }
@@ -49,5 +52,40 @@ public class Person {
     @Override
     public String toString() {
         return name + " " + lastName;
+    }
+    public static class PersonBuilder {
+        private final boolean[] assigned = new boolean[4];
+        private String name;
+        private String lastName;
+        private String login;
+        private String password;
+        public PersonBuilder name(String name) {
+            this.name = name;
+            assigned[0] = true;
+            return this;
+        }
+        public PersonBuilder lastName(String lastName) {
+            this.lastName = lastName;
+            assigned[1] = true;
+            return this;
+        }
+        public PersonBuilder login(String login) {
+            this.login = login;
+            assigned[2] = true;
+            return this;
+        }
+        public PersonBuilder password(String password) {
+            this.password = password;
+            assigned[3] = true;
+            return this;
+        }
+        public Person build() {
+            for(boolean bool : assigned) {
+                if(!bool) {
+                    throw new RuntimeException("Nie przypisano wszystkich pól");
+                }
+            }
+            return new Person(this);
+        }
     }
 }

@@ -29,11 +29,12 @@ public class ProductManager {
         }
         return false;
     }
-    private boolean addProduct(Product product) {
+    public boolean addProduct(Product product) {
         var productInList = productList.stream()
                 .filter(item -> item.hashCode() == product.hashCode())
                 .findFirst();
         if(productInList.isEmpty()) {
+            product.setId(availableId);
             productList.add(product);
             availableId++;
             return true;
