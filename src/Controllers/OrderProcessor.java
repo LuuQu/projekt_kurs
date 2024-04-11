@@ -4,6 +4,9 @@ import Model.Order;
 import Model.Product;
 import Model.ProductManager;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Scanner;
 
 public class OrderProcessor {
@@ -35,7 +38,23 @@ public class OrderProcessor {
         }
     }
     public static void generateInvoice(Order order) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        // Uzyskaj strefę czasową dla aktualnej lokalizacji
+        ZoneId zoneId = ZoneId.systemDefault();
+        // Tworzenie obiektu ZonedDateTime z LocalDateTime i ZoneId
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
+
+        // Pobierz przesunięcie czasowe dla strefy czasowej
+        String offset = zonedDateTime.getOffset().toString();
         System.out.println("Zamówienie wykonane pomyślnie");
+        System.out.println("Godzina zamówienia: ");
+        System.out.println(localDateTime.getDayOfMonth() + "-"
+                + localDateTime.getMonthValue() + "-"
+                + localDateTime.getYear()+ " "
+                + localDateTime.getHour() + ":"
+                + localDateTime.getMinute()+ ":"
+                + localDateTime.getSecond() + " "
+                + "UTC " + offset);
         System.out.println("Klient:");
         System.out.println(order.getPerson().toString());
         System.out.println("Zamówienie:");
