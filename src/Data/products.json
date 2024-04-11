@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "name": "Wiatrak",
+    "price": 100.0,
+    "amount": 32
+  },
+  {
+    "id": 1,
+    "name": "Obudowa1",
+    "price": 100.0,
+    "amount": 42
+  },
+  {
+    "id": 2,
+    "name": "Obudowa2",
+    "price": 150.0,
+    "amount": 23
+  },
+  {
+    "id": 3,
+    "name": "Płyta główna",
+    "price": 600.0,
+    "amount": 12
+  },
+  {
+    "id": 4,
+    "name": "Płyta główna2",
+    "price": 900.0,
+    "amount": 8
+  },
+  {
+    "id": 5,
+    "name": "Procesor",
+    "price": 500.0,
+    "amount": 16
+  },
+  {
+    "id": 6,
+    "name": "Procesor2",
+    "price": 800.0,
+    "amount": 15
+  },
+  {
+    "id": 7,
+    "name": "Ram",
+    "price": 200.0,
+    "amount": 120
+  },
+  {
+    "id": 8,
+    "name": "Ram2",
+    "price": 300.0,
+    "amount": 86
+  },
+  {
+    "id": 9,
+    "name": "DyskSSD",
+    "price": 200.0,
+    "amount": 347
+  },
+  {
+    "id": 10,
+    "name": "DyshHDD",
+    "price": 50.0,
+    "amount": 86
+  },
+  {
+    "id": 11,
+    "name": "Karta graficzna RTX4060",
+    "price": 1500.0,
+    "amount": 15
+  },
+  {
+    "id": 12,
+    "name": "Karta graficzna Radeon RX660",
+    "price": 1000.0,
+    "amount": 43
+  },
+  {
+    "id": 13,
+    "name": "zasilacz 400W",
+    "price": 80.0,
+    "amount": 15
+  },
+  {
+    "id": 14,
+    "name": "zasilacz 600W",
+    "price": 250.0,
+    "amount": 43
+  },
+  {
+    "id": 15,
+    "name": "komputer",
+    "price": 3180.0,
+    "amount": 4
+  }
+]

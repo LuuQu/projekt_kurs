@@ -1,14 +1,19 @@
 package Model;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class Order {
     private Person person;
     private List<Product> productList;
     private float amount;
-    public Order(Person person, List<Product> productList) {
+    private Date date;
+    public Order(Person person, List<Product> productList, LocalDateTime dateTime) {
         this.person = person;
         this.productList = productList;
+        this.date = Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
         calculateAmount();
     }
     private void calculateAmount() {
@@ -33,6 +38,15 @@ public class Order {
         this.productList = productList;
         calculateAmount();
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public float getAmount() {
         return amount;
     }

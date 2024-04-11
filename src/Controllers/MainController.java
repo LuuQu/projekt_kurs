@@ -1,11 +1,12 @@
 package Controllers;
 
-import Enums.*;
+import Enums.ComputerComponents;
+import Enums.TypeOfPage;
 import Model.*;
 
 import java.lang.reflect.Method;
+import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MainController {
     private Queue<String> methodsToInvoke;
@@ -18,10 +19,14 @@ public class MainController {
     public MainController() {
         productsInShop = new ProductManager();
         cart = new Cart();
-        users = new ArrayList<>();
+        users = DataController.getUsers();
         methodsToInvoke = new ArrayDeque<>();
         argsToInvoke = new ArrayList<>();
-        addData();
+        for(Product p : DataController.getProducts()) {
+            productsInShop.addProduct(p);
+        }
+        //addData();
+        //DataController.saveProducts(productsInShop.getProductList());
     }
     // rozpoczęcie działania kontrolera
     public void main() {
@@ -102,6 +107,7 @@ public class MainController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        DataController.saveUsers(users);
         methodsToInvoke.add("loginMenu");
         argsToInvoke = null;
     }
@@ -455,7 +461,7 @@ public class MainController {
     }
 
     private void processOrder() {
-        OrderProcessor.processOrder(new Order(loggedInPerson,cart.getProductList()),productsInShop);
+        OrderProcessor.processOrder(new Order(loggedInPerson,cart.getProductList(), LocalDateTime.now()),productsInShop);
         cart = null;
 //        try {
 //            Thread.sleep(3000);

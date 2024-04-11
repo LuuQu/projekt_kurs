@@ -1,0 +1,38 @@
+[
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak",
+      "login": "jan123",
+      "password": "nowak456"
+    },
+    "productList": [
+      {
+        "id": 0,
+        "name": "Wiatrak",
+        "price": 100.0,
+        "amount": 2
+      }
+    ],
+    "amount": 200.0,
+    "date": "Apr 11, 2024, 9:47:24 PM"
+  },
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak",
+      "login": "jan123",
+      "password": "nowak456"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 1
+      }
+    ],
+    "amount": 3180.0,
+    "date": "Apr 11, 2024, 9:48:22 PM"
+  }
+]

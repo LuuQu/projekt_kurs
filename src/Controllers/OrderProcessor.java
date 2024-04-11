@@ -31,14 +31,16 @@ public class OrderProcessor {
             for(Product p : order.getProductList()) {
                 productManager.removeAmountOfProduct(p);
             }
-            generateInvoice(order);
+            generateInvoice(order, productManager);
         }
         catch (Exception ex) {
             System.out.println(ex);
         }
     }
-    public static void generateInvoice(Order order) {
-        LocalDateTime localDateTime = LocalDateTime.now();
+    public static void generateInvoice(Order order, ProductManager productManager) {
+        DataController.saveNewOrder(order);
+        DataController.saveProducts(productManager.getProductList());
+        LocalDateTime localDateTime = order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         // Uzyskaj strefę czasową dla aktualnej lokalizacji
         ZoneId zoneId = ZoneId.systemDefault();
         // Tworzenie obiektu ZonedDateTime z LocalDateTime i ZoneId

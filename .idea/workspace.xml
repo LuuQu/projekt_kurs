@@ -4,20 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="interfejs part 3 (Task 7) &#10;kupowanie przedmiotów&#10;modyfikacja komputera">
+    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="czas zamówienia (Task 8)">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projekt_kurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projekt_kurs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,13 +44,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.DataController.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "18",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/LuQ/Desktop/java programy/kurs",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+    "last_opened_file_path": "C:/Users/LuQ/Downloads/gson-2.8.2.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager">
@@ -156,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712858627365</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="czas zamówienia (Task 8)">
+      <option name="closed" value="true" />
+      <created>1712859676774</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712859676774</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -170,6 +190,7 @@
     <MESSAGE value="interfejs part 1 (Task 7) &#10;podstawowe logowanie i rejestracja&#10;przeglądanie przedmiotów w koszyku i sklepie&#10;obsługa produktów (bez modyfikacji smartfonów i komputerów)" />
     <MESSAGE value="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów" />
     <MESSAGE value="interfejs part 3 (Task 7) &#10;kupowanie przedmiotów&#10;modyfikacja komputera" />
-    <option name="LAST_COMMIT_MESSAGE" value="interfejs part 3 (Task 7) &#10;kupowanie przedmiotów&#10;modyfikacja komputera" />
+    <MESSAGE value="czas zamówienia (Task 8)" />
+    <option name="LAST_COMMIT_MESSAGE" value="czas zamówienia (Task 8)" />
   </component>
 </project>
