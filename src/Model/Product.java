@@ -68,6 +68,6 @@ public class Product {
                 +"Suma: " + price * amount;
     }
     public String printLabel() {
-        return name + ", cena: " + price + ", ilość: " + amount;
+        return name + ", cena: " + price;
     }
 }

@@ -4,12 +4,14 @@ import Model.Order;
 import Model.Product;
 import Model.ProductManager;
 
+import java.util.Scanner;
+
 public class OrderProcessor {
     public static void processOrder(Order order, ProductManager productManager) {
         try {
             for(Product p : order.getProductList()) {
                 int avaiableAmount = productManager.getAmountOfProduct(p.getId());
-                if(p.getAmount() < avaiableAmount) {
+                if(p.getAmount() > avaiableAmount) {
                     StringBuilder builder = new StringBuilder();
                     builder.append("Brak wymagającej ilości produktu w magazynie");
                     builder.append("\n");
@@ -42,5 +44,9 @@ public class OrderProcessor {
         }
         System.out.println("Cena całkowita: ");
         System.out.println(order.getAmount());
+        System.out.println();
+        System.out.println("Naciśnij enter, aby kontynuować...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
     }
 }

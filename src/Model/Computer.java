@@ -101,6 +101,20 @@ public class Computer extends Electronics {
     public void setCharger(Product charger) {
         this.charger = charger;
     }
+    @Override
+    public Computer copy() {
+        return new Computer(this.getId(),
+                this.getName(),
+                this.getPrice(),
+                this.getAmount(),
+                this.computerCase,
+                this.motherboard,
+                this.processor,
+                this.ram,
+                this.hardDrive,
+                this.graphicsCard,
+                this.charger);
+    }
     public static class ComputerBuilder {
         private final boolean[] basicAssigned = new boolean[4];
         private int id;

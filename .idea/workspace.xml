@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="interfejs part 1 (Task 7) &#10;podstawowe logowanie i rejestracja&#10;przeglądanie przedmiotów w koszyku i sklepie&#10;obsługa produktów (bez modyfikacji smartfonów i komputerów)">
+    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712680926653</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów">
+      <option name="closed" value="true" />
+      <created>1712824419062</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712824419062</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -152,17 +163,7 @@
     <MESSAGE value="order + klasa osoby (Task 5)" />
     <MESSAGE value="OrderProcessor (Task 6)&#10;+ update ProductManager" />
     <MESSAGE value="interfejs part 1 (Task 7) &#10;podstawowe logowanie i rejestracja&#10;przeglądanie przedmiotów w koszyku i sklepie&#10;obsługa produktów (bez modyfikacji smartfonów i komputerów)" />
-    <option name="LAST_COMMIT_MESSAGE" value="interfejs part 1 (Task 7) &#10;podstawowe logowanie i rejestracja&#10;przeglądanie przedmiotów w koszyku i sklepie&#10;obsługa produktów (bez modyfikacji smartfonów i komputerów)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Controllers/MainController.java</url>
-          <line>445</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów" />
+    <option name="LAST_COMMIT_MESSAGE" value="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów" />
   </component>
 </project>

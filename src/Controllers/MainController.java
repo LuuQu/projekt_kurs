@@ -5,6 +5,7 @@ import Model.*;
 
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MainController {
     private Queue<String> methodsToInvoke;
@@ -156,6 +157,9 @@ public class MainController {
         System.out.println("n - Następna strona");
         System.out.println("p - Poprzednia strona");
         System.out.println("c - cofnij do głównego menu");
+        if(activePage == TypeOfPage.CART) {
+            System.out.println("z - zamów produkty z koszyka");
+        }
         System.out.println("0 - 9 podgląd przedmiotu");
         printOptions(options);
         HashMap<Character,String> methodOptions = new HashMap<>();
@@ -169,6 +173,9 @@ public class MainController {
         }
         else {
             methodArguments.put('p',getListOfObjects(page - 1));
+        }
+        if(activePage == TypeOfPage.CART) {
+            methodOptions.put('z',"processOrder");
         }
         for(int i = 0; i < 10; i++) {
             char c = (char)(i + '0');
@@ -216,21 +223,32 @@ public class MainController {
         printMenu();
         System.out.println("Produkt:");
         System.out.println(product);
+        if (product instanceof Computer) {
+            Computer computer = (Computer) product;
+            System.out.print("Obudowa -> ");
+            System.out.println(computer.getComputerCase().printLabel());
+            System.out.print("Płyta główna -> ");
+            System.out.println(computer.getMotherboard().printLabel());
+            System.out.print("Procesor -> ");
+            System.out.println(computer.getProcessor().printLabel());
+            System.out.print("Pamięć RAM -> ");
+            System.out.println(computer.getRam().printLabel());
+            System.out.print("Dysk twardy -> ");
+            System.out.println(computer.getHardDrive().printLabel());
+            System.out.print("Karta graficzna -> ");
+            System.out.println(computer.getGraphicsCard().printLabel());
+            System.out.print("Zasilacz -> ");
+            System.out.println(computer.getCharger().printLabel());
+        }
+        System.out.println();
         List<String> options = new ArrayList<>();
         HashMap<Character,String> methodOptions = new HashMap<>();
         HashMap<Character,List<Object>> methodArguments = new HashMap<>();
         if(activePage == TypeOfPage.CART) {
             //koszyk
             options.add("1. Zmień ilość produktu do zakupu");
-            options.add("2. Usuń produkt z koszyka");
             methodOptions.put('1',"setAmountOfProductToBuy"); //modyfikuj ilość - index i wczytanie nowej wartości
             methodArguments.put('1',getListOfObjects(index));
-            methodOptions.put('2',"deleteProduct"); //usunięcie przedmiotu - enum
-            methodArguments.put('2',getListOfObjects(index));
-//            if(product instanceof Computer || product instanceof Smartphone) {
-//                options.add("3. Modyfikuj produkt");
-//                methodOptions.put('3',"login"); //modyfikacja przedmiotu
-//            }
         }
         else {
             //sklep
@@ -238,6 +256,34 @@ public class MainController {
             //methodOptions.put('1',"login"); //dodawanie przedmiotu - index
             methodOptions.put('1',"setAmountOfProductToBuy");
             methodArguments.put('1',getListOfObjects(index));
+        }
+        if(product instanceof Computer) {
+            options.add("2. Zmień obudowę");
+            options.add("3. Zmień płytę główną");
+            options.add("4. Zmień procesor");
+            options.add("5. Zmień pamięć RAM");
+            options.add("6. Zmień dysk twardy");
+            options.add("7. Zmień kartę graficzną");
+            options.add("8. Zmień zasilacz");
+            methodOptions.put('2',"changeComponentOfComputer");
+            methodArguments.put('2',getListOfObjects(index,ComputerComponents.COMPUTER_CASE, 1));
+            methodOptions.put('3',"changeComponentOfComputer");
+            methodArguments.put('3',getListOfObjects(index,ComputerComponents.MOTHERBOARD, 1));
+            methodOptions.put('4',"changeComponentOfComputer");
+            methodArguments.put('4',getListOfObjects(index,ComputerComponents.PROCESSOR, 1));
+            methodOptions.put('5',"changeComponentOfComputer");
+            methodArguments.put('5',getListOfObjects(index,ComputerComponents.RAM, 1));
+            methodOptions.put('6',"changeComponentOfComputer");
+            methodArguments.put('6',getListOfObjects(index,ComputerComponents.HARD_DRIVE, 1));
+            methodOptions.put('7',"changeComponentOfComputer");
+            methodArguments.put('7',getListOfObjects(index,ComputerComponents.GRAPHICS_CARD, 1));
+            methodOptions.put('8',"changeComponentOfComputer");
+            methodArguments.put('8',getListOfObjects(index,ComputerComponents.CHARGER, 1));
+        }
+        if(activePage == TypeOfPage.CART) {
+            options.add("9. Usuń produkt z koszyka");
+            methodOptions.put('9',"deleteProduct"); //usunięcie przedmiotu - enum
+            methodArguments.put('9',getListOfObjects(index));
         }
         options.add("c - Cofnij");
         methodOptions.put('c',"listWithProducts");
@@ -309,8 +355,14 @@ public class MainController {
             product1.setAmount(newAmount);
             cart.addProduct(product1);
         }
-        methodsToInvoke.add("singleProduct");
-        argsToInvoke = getListOfObjects(index);
+        if(activePage == TypeOfPage.CART) {
+            methodsToInvoke.add("singleProduct");
+            argsToInvoke = getListOfObjects(index);
+        }
+        else {
+            methodsToInvoke.add("listWithProducts");
+            argsToInvoke = getListOfObjects(1);
+        }
 
     }
     private void deleteProduct(Integer index) {
@@ -318,7 +370,104 @@ public class MainController {
         methodsToInvoke.add("listWithProducts");
         argsToInvoke = getListOfObjects(1);
     }
+    private void changeComponentOfComputer(Integer index, ComputerComponents computerComponents, Integer page) {
+        Computer product;
+        try
+        {
+            product = (Computer)cart.getProductList().get(index);
+        }
+        catch (Exception e) {
+            System.out.println("Produkt poza zasięgiem");
+            methodsToInvoke.add("listWithProducts");
+            argsToInvoke = getListOfObjects((cart.getProductList().size() - 1) % 10 + 1);
+            return;
+        }
+        Product componentToChange;
+        try {
+            switch (computerComponents) {
+                case COMPUTER_CASE -> componentToChange = product.getComputerCase();
+                case MOTHERBOARD -> componentToChange = product.getMotherboard();
+                case PROCESSOR -> componentToChange = product.getProcessor();
+                case RAM -> componentToChange = product.getRam();
+                case HARD_DRIVE -> componentToChange = product.getHardDrive();
+                case GRAPHICS_CARD -> componentToChange = product.getGraphicsCard();
+                case CHARGER -> componentToChange = product.getCharger();
+                default -> throw new Exception();
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return;
+        }
+        List<Product> productList = productsInShop.getProductList(computerComponents)
+                .stream()
+                .filter(item -> item.getId() != product.getId())
+                .toList();
+        if(productList.isEmpty()) {
+            System.out.println("Brak innych opcji w sklepie dla wybranej części komputera.");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            methodsToInvoke.add("singleProduct");
+            argsToInvoke = getListOfObjects(index);
+            return;
+        }
+        clearConsole();
+        printMenu();
+        System.out.println("Wybierz nową część: ");
+        List<String> options = new ArrayList<>();
+        for(int i = 0; i < productList.size(); i++) {
+            options.add((i+1) + ". " + productList.get(i).printLabel());
+        }
+        printOptions(options);
+        Scanner scanner = new Scanner(System.in);
+        int chosenOption;
+        while (true) {
+            try {
+                System.out.println();
+                System.out.print("-> ");
+                chosenOption = scanner.nextInt();
+                if(chosenOption < 1 || chosenOption > productList.size() + 1){
+                    throw new Exception();
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Wybierz jedną z opcji 1 - " + (productList.size() + 1));
+            }
+        }
+        Product newPart = productList.get(chosenOption - 1);
+        float amountDiffrence = newPart.getPrice() - componentToChange.getPrice();
+        switch (computerComponents) {
+            case COMPUTER_CASE -> product.setComputerCase(newPart);
+            case MOTHERBOARD -> product.setMotherboard(newPart);
+            case PROCESSOR -> product.setProcessor(newPart);
+            case RAM -> product.setRam(newPart);
+            case HARD_DRIVE -> product.setHardDrive(newPart);
+            case GRAPHICS_CARD -> product.setGraphicsCard(newPart);
+            case CHARGER -> product.setCharger(newPart);
+        }
+        product.setPrice(product.getPrice() + amountDiffrence);
+        methodsToInvoke.add("singleProduct");
+        argsToInvoke = getListOfObjects(index);
+    }
+
+    private void processOrder() {
+        OrderProcessor.processOrder(new Order(loggedInPerson,cart.getProductList()),productsInShop);
+        cart = null;
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        methodsToInvoke.add("mainMenu");
+        argsToInvoke = null;
+    }
+
     ////////////     funkcje pomocnicze
+
 
     //funkcja do wylogowania
     private void logout() {
