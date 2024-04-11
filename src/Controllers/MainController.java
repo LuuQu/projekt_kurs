@@ -123,20 +123,20 @@ public class MainController {
     //ekran z produktami do kupienia
     private void productList() {
         activePage = TypeOfPage.SHOP;
-        this.listWithProducts(1,TypeOfPage.SHOP);
+        this.listWithProducts(1);
     }
     private void cardList() {
         activePage = TypeOfPage.CART;
-        this.listWithProducts(1,TypeOfPage.CART);
+        this.listWithProducts(1);
     }
-    private void listWithProducts(Integer page, TypeOfPage typeOfPage) {
+    private void listWithProducts(Integer page) {
         clearConsole();
         printMenu();
         System.out.println("Produkty:");
         System.out.println();
         while (true) {
             try {
-                if(typeOfPage == TypeOfPage.CART) {
+                if(activePage == TypeOfPage.CART) {
                     printProducts(page, cart.getProductList());
                 }
                 else {
@@ -147,7 +147,7 @@ public class MainController {
             catch (Exception e) {
                 System.out.println(e);
                 methodsToInvoke.add("listWithProducts");
-                argsToInvoke = getListOfObjects(page - 1, typeOfPage);
+                argsToInvoke = getListOfObjects(page - 1);
                 return;
             }
         }
@@ -163,47 +163,54 @@ public class MainController {
         methodOptions.put('n',"listWithProducts");
         methodOptions.put('p',"listWithProducts");
         methodOptions.put('c',"mainMenu");
-        methodArguments.put('n',getListOfObjects(page + 1, typeOfPage));
+        methodArguments.put('n',getListOfObjects(page + 1));
         if(page == 1) {
-            methodArguments.put('p',getListOfObjects(page, typeOfPage));
+            methodArguments.put('p',getListOfObjects(page));
         }
         else {
-            methodArguments.put('p',getListOfObjects(page - 1, typeOfPage));
+            methodArguments.put('p',getListOfObjects(page - 1));
         }
         for(int i = 0; i < 10; i++) {
             char c = (char)(i + '0');
             int index = i + (page - 1) * 10;
-            if(typeOfPage == TypeOfPage.CART) {
+            if(activePage == TypeOfPage.CART) {
                 if(cart.getProductList().size() <= index) {
                     methodOptions.put(c,"listWithProducts");
-                    methodArguments.put(c,getListOfObjects(page, typeOfPage));
+                    methodArguments.put(c,getListOfObjects(page));
                     continue;
                 }
             }
             else {
                 if(productsInShop.getProductList().size() <= index) {
                     methodOptions.put(c,"listWithProducts");
-                    methodArguments.put(c,getListOfObjects(page, typeOfPage));
+                    methodArguments.put(c,getListOfObjects(page));
                     continue;
                 }
             }
             methodOptions.put(c,"singleProduct");
-            methodArguments.put(c,getListOfObjects(index, typeOfPage));
+            methodArguments.put(c,getListOfObjects(index));
         }
         scannerPicker(methodOptions, methodArguments);
     }
     //pojedyńczy produkt
-    private void singleProduct(Integer index, TypeOfPage typeOfPage) {
+    private void singleProduct(Integer index) {
         clearConsole();
         Product product;
+        List<Product> list;
+        if(activePage == TypeOfPage.SHOP) {
+            list = productsInShop.getProductList();
+        }
+        else {
+            list = cart.getProductList();
+        }
         try
         {
-            product =  productsInShop.getProductList().get(index);
+            product =  list.get(index);
         }
         catch (Exception e) {
             System.out.println("Produkt poza zasięgiem");
             methodsToInvoke.add("listWithProducts");
-            argsToInvoke = getListOfObjects((productsInShop.getProductList().size() - 1) % 10 + 1, activePage);
+            argsToInvoke = getListOfObjects((list.size() - 1) % 10 + 1);
             return;
         }
         printMenu();
@@ -212,7 +219,7 @@ public class MainController {
         List<String> options = new ArrayList<>();
         HashMap<Character,String> methodOptions = new HashMap<>();
         HashMap<Character,List<Object>> methodArguments = new HashMap<>();
-        if(typeOfPage == TypeOfPage.CART) {
+        if(activePage == TypeOfPage.CART) {
             //koszyk
             options.add("1. Zmień ilość produktu do zakupu");
             options.add("2. Usuń produkt z koszyka");
@@ -228,84 +235,88 @@ public class MainController {
         else {
             //sklep
             options.add("1. Kup produkt");
-            options.add("2. Cofnij");
             //methodOptions.put('1',"login"); //dodawanie przedmiotu - index
-            methodOptions.put('1',"addProductToCart");
+            methodOptions.put('1',"setAmountOfProductToBuy");
             methodArguments.put('1',getListOfObjects(index));
-            methodOptions.put('2',"listWithProducts");
-            methodArguments.put('2',getListOfObjects(1,typeOfPage));
         }
+        options.add("c - Cofnij");
+        methodOptions.put('c',"listWithProducts");
+        methodArguments.put('c',getListOfObjects(1));
         printOptions(options);
         scannerPicker(methodOptions, methodArguments);
     }
     //zmiana ilość produktu w koszyku
     private void setAmountOfProductToBuy(Integer index) {
         Product product;
+        List<Product> list;
+        if(activePage == TypeOfPage.SHOP) {
+            list = productsInShop.getProductList();
+        }
+        else {
+            list = cart.getProductList();
+        }
         try
         {
-            product =  productsInShop.getProductList().get(index);
+            product =  list.get(index);
         }
         catch (Exception e) {
             System.out.println("Produkt poza zasięgiem");
             methodsToInvoke.add("listWithProducts");
-            argsToInvoke = getListOfObjects((productsInShop.getProductList().size() - 1) % 10 + 1, activePage);
+            argsToInvoke = getListOfObjects((list.size() - 1) % 10 + 1);
             return;
         }
+        int maxAmount;
+        if(activePage == TypeOfPage.SHOP) {
+            maxAmount = product.getAmount();
+        }
+        else {
+            try {
+                maxAmount = productsInShop.getAmountOfProduct(product.getId());
+            }
+            catch (Exception e) {
+                System.out.println(e);
+                methodsToInvoke.add("productList");
+                argsToInvoke = null;
+                return;
+            }
+        }
+        System.out.println("Podaj ilość produktu do zakupienia:");
+        System.out.println("Wybierz pomiędzy 1 - " + maxAmount);
+        System.out.print("-> ");
         Scanner scanner = new Scanner(System.in);
         int newAmount;
         while(true) {
             try {
                 newAmount = scanner.nextInt();
-                if(newAmount > product.getAmount() || newAmount <= 0) {
+                if(newAmount > maxAmount || newAmount <= 0) {
                     throw new Exception();
                 }
                 break;
             }
             catch (Exception e) {
-                System.out.println("Wybierz liczbę pomiędzy 1 - " + product.getAmount());
+                System.out.println("Wybierz liczbę pomiędzy 1 - " + maxAmount);
+                System.out.print("-> ");
             }
             finally {
                 scanner.nextLine();
             }
         }
         if(activePage == TypeOfPage.CART) {
-            int finalNewAmount = newAmount;
-            cart.getProductList()
-                    .stream()
-                    .filter(item -> item.getId() == product.getId())
-                    .findFirst()
-                    .ifPresent(item -> {
-                        item.setAmount(finalNewAmount);
-                    });
+            product.setAmount(newAmount);
         }
         else {
-            cart.addProduct(product.copy());
+            Product product1 = product.copy();
+            product1.setAmount(newAmount);
+            cart.addProduct(product1);
         }
         methodsToInvoke.add("singleProduct");
-        argsToInvoke = getListOfObjects(index, activePage);
+        argsToInvoke = getListOfObjects(index);
 
     }
     private void deleteProduct(Integer index) {
         cart.removeProduct(index);
         methodsToInvoke.add("listWithProducts");
-        argsToInvoke = getListOfObjects(1, activePage);
-    }
-    private void addProductToCart(Integer index) {
-        try {
-            var product = productsInShop.getProductList()
-                    .stream()
-                    .filter(item -> item.getId() == index)
-                    .findFirst();
-            if(product.isEmpty()) {
-                throw new Exception("Brak przedmiotu w sklepie o podanym indeksie");
-            }
-            cart.addProduct(product.get());
-        }
-        catch (Exception e) {
-            System.out.println(e);
-        }
-        methodsToInvoke.add("setAmountOfProductToBuy");
-        argsToInvoke = getListOfObjects(index);
+        argsToInvoke = getListOfObjects(1);
     }
     ////////////     funkcje pomocnicze
 
