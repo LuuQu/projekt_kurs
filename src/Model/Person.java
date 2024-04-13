@@ -48,7 +48,9 @@ public class Person {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    public Person copySimplifiedPerson() {
+        return new Person(this.name, this.lastName);
+    }
     @Override
     public String toString() {
         return name + " " + lastName;

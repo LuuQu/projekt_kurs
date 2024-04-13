@@ -9,8 +9,14 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
-public class OrderProcessor {
-    public static void processOrder(Order order, ProductManager productManager) {
+public class OrderProcessor extends Thread {
+    private Order order;
+    private ProductManager productManager;
+    public OrderProcessor(Order order, ProductManager productManager) {
+        this.order = order;
+        this.productManager = productManager;
+    }
+    public void processOrder() {
         try {
             for(Product p : order.getProductList()) {
                 int avaiableAmount = productManager.getAmountOfProduct(p.getId());
@@ -31,13 +37,13 @@ public class OrderProcessor {
             for(Product p : order.getProductList()) {
                 productManager.removeAmountOfProduct(p);
             }
-            generateInvoice(order, productManager);
+            generateInvoice();
         }
         catch (Exception ex) {
             System.out.println(ex);
         }
     }
-    public static void generateInvoice(Order order, ProductManager productManager) {
+    public void generateInvoice() {
         DataController.saveNewOrder(order);
         DataController.saveProducts(productManager.getProductList());
         LocalDateTime localDateTime = order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
@@ -69,5 +75,9 @@ public class OrderProcessor {
         System.out.println("Naciśnij enter, aby kontynuować...");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
+    }
+    @Override
+    public void run() {
+        processOrder();
     }
 }

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="czas zamówienia (Task 8)">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projekt_kurs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projekt_kurs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/DataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,22 +40,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DataController.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "18",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/LuQ/Downloads/gson-2.8.2.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DataController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/LuQ/Downloads/gson-2.8.2.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -176,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712859676774</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień">
+      <option name="closed" value="true" />
+      <created>1712865151582</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712865151582</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -191,6 +197,7 @@
     <MESSAGE value="interfejs part 2 (Task 7) &#10;typeOfPage w zmienną globalną&#10;naprawa wczytywania pojedyńczego produktu&#10;naprawa kupowania produktów" />
     <MESSAGE value="interfejs part 3 (Task 7) &#10;kupowanie przedmiotów&#10;modyfikacja komputera" />
     <MESSAGE value="czas zamówienia (Task 8)" />
-    <option name="LAST_COMMIT_MESSAGE" value="czas zamówienia (Task 8)" />
+    <MESSAGE value="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień" />
+    <option name="LAST_COMMIT_MESSAGE" value="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień" />
   </component>
 </project>

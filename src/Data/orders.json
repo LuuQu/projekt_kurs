@@ -2,9 +2,7 @@
   {
     "person": {
       "name": "Jan",
-      "lastName": "Nowak",
-      "login": "jan123",
-      "password": "nowak456"
+      "lastName": "Nowak"
     },
     "productList": [
       {
@@ -20,9 +18,7 @@
   {
     "person": {
       "name": "Jan",
-      "lastName": "Nowak",
-      "login": "jan123",
-      "password": "nowak456"
+      "lastName": "Nowak"
     },
     "productList": [
       {
@@ -34,5 +30,37 @@
     ],
     "amount": 3180.0,
     "date": "Apr 11, 2024, 9:48:22 PM"
+  },
+  {
+    "person": {
+      "name": "Andrzej",
+      "lastName": "Wajda"
+    },
+    "productList": [
+      {
+        "id": 13,
+        "name": "zasilacz 400W",
+        "price": 80.0,
+        "amount": 1
+      }
+    ],
+    "amount": 80.0,
+    "date": "Apr 13, 2024, 4:48:34 PM"
+  },
+  {
+    "person": {
+      "name": "Andrzej",
+      "lastName": "Wajda"
+    },
+    "productList": [
+      {
+        "id": 1,
+        "name": "Obudowa1",
+        "price": 100.0,
+        "amount": 2
+      }
+    ],
+    "amount": 200.0,
+    "date": "Apr 13, 2024, 4:51:16 PM"
   }
 ]

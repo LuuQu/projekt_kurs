@@ -4,5 +4,11 @@
     "lastName": "Nowak",
     "login": "jan123",
     "password": "nowak456"
+  },
+  {
+    "name": "Andrzej",
+    "lastName": "Wajda",
+    "login": "a1",
+    "password": "w2"
   }
 ]

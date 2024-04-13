@@ -461,13 +461,9 @@ public class MainController {
     }
 
     private void processOrder() {
-        OrderProcessor.processOrder(new Order(loggedInPerson,cart.getProductList(), LocalDateTime.now()),productsInShop);
+        OrderProcessor orderProcessor = new OrderProcessor(new Order(loggedInPerson.copySimplifiedPerson(),cart.getProductList(), LocalDateTime.now()),productsInShop);
+        orderProcessor.start();
         cart = null;
-//        try {
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         methodsToInvoke.add("mainMenu");
         argsToInvoke = null;
     }
