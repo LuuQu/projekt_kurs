@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "computerComponent": "COMPUTER_CASE"
+  },
+  {
+    "id": 2,
+    "computerComponent": "COMPUTER_CASE"
+  },
+  {
+    "id": 3,
+    "computerComponent": "MOTHERBOARD"
+  },
+  {
+    "id": 4,
+    "computerComponent": "MOTHERBOARD"
+  },
+  {
+    "id": 5,
+    "computerComponent": "PROCESSOR"
+  },
+  {
+    "id": 6,
+    "computerComponent": "PROCESSOR"
+  },
+  {
+    "id": 7,
+    "computerComponent": "RAM"
+  },
+  {
+    "id": 8,
+    "computerComponent": "RAM"
+  },
+  {
+    "id": 9,
+    "computerComponent": "HARD_DRIVE"
+  },
+  {
+    "id": 10,
+    "computerComponent": "HARD_DRIVE"
+  },
+  {
+    "id": 11,
+    "computerComponent": "GRAPHICS_CARD"
+  },
+  {
+    "id": 12,
+    "computerComponent": "GRAPHICS_CARD"
+  },
+  {
+    "id": 13,
+    "computerComponent": "CHARGER"
+  },
+  {
+    "id": 14,
+    "computerComponent": "CHARGER"
+  },
+  {
+    "id": 16,
+    "smartphoneComponent": "SMARTPHONE_CASE"
+  },
+  {
+    "id": 17,
+    "smartphoneComponent": "SMARTPHONE_CASE"
+  },
+  {
+    "id": 18,
+    "smartphoneComponent": "SMARTPHONE_CASE"
+  },
+  {
+    "id": 19,
+    "smartphoneComponent": "SMARTPHONE_CASE"
+  },
+  {
+    "id": 20,
+    "smartphoneComponent": "SMARTPHONE_CASE"
+  }
+]

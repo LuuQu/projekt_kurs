@@ -29,10 +29,14 @@ public class DataController {
     private static final ReentrantLock ordersLock = new ReentrantLock();
     private static final ReentrantLock ordersAddSingleLock = new ReentrantLock();
     private static final String ordersPATH = "src/Data/orders.json";
+    private static final ReentrantLock componenetsLock = new ReentrantLock();
+    private static final ReentrantLock componenetsAddSingleLock = new ReentrantLock();
+    private static final String componenetsPATH = "src/Data/components.json";
     public DataController() {
         createFileIfDontExist(userDataPATH);
         createFileIfDontExist(productsPATH);
         createFileIfDontExist(ordersPATH);
+        createFileIfDontExist(componenetsPATH);
     }
     //Użytkownicy
     public static void addNewUser(Person person) {
@@ -168,12 +172,52 @@ public class DataController {
         }
         ordersLock.unlock();
     }
+    //Części smartfona/komputera
+    public static void saveNewComponent(ProductEnum component) {
+        componenetsAddSingleLock.lock();
+        List<ProductEnum> items = getComponents();
+        items.add(component);
+        saveComponents(items);
+        componenetsAddSingleLock.unlock();
+    }
+    public static List<ProductEnum> getComponents() {
+        List<ProductEnum> items = new ArrayList<>();
+        Gson gson = new Gson();
+        createFileIfDontExist(componenetsPATH);
+        componenetsLock.lock();
+        try (FileReader reader = new FileReader(componenetsPATH)) {
+            Type listType = new TypeToken<List<ProductEnum>>() {}.getType();
+            List<ProductEnum> itemsInJson = gson.fromJson(reader, listType);
+            if(itemsInJson == null) {
+                componenetsLock.unlock();
+                return items;
+            }
+            items.addAll(itemsInJson);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        componenetsLock.unlock();
+        return items;
+    }
+    public static void saveComponents(List<ProductEnum> components) {
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        componenetsLock.lock();
+        try (FileWriter writer = new FileWriter(componenetsPATH)) {
+            gson.toJson(components, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        componenetsLock.unlock();
+    }
     //Pomocnicze
     private static void createFileIfDontExist(String path) {
         switch (path) {
             case userDataPATH -> userDataLock.lock();
             case productsPATH -> productsLock.lock();
             case ordersPATH -> ordersLock.lock();
+            case componenetsPATH -> componenetsLock.lock();
         }
         File file = new File(path);
         if (!file.exists()) {
@@ -187,6 +231,7 @@ public class DataController {
             case userDataPATH -> userDataLock.unlock();
             case productsPATH -> productsLock.unlock();
             case ordersPATH -> ordersLock.unlock();
+            case componenetsPATH -> componenetsLock.unlock();
         }
     }
 }

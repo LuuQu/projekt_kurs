@@ -125,6 +125,28 @@ public class ProductManager {
         smartphoneComponentsHashMap.put(product.getId(), component);
         return this.updateProduct(product);
     }
+    public boolean addProductComponents(int productId, ComputerComponents component) {
+        var product = productList
+                .stream()
+                .filter(item -> item.getId() == productId)
+                .findFirst();
+        if(product.isEmpty()) {
+            return false;
+        }
+        computerComponentsHashMap.put(productId,component);
+        return true;
+    }
+    public boolean addProductComponents(int productId, SmartphoneComponents component) {
+        var product = productList
+                .stream()
+                .filter(item -> item.getId() == productId)
+                .findFirst();
+        if(product.isEmpty()) {
+            return false;
+        }
+        smartphoneComponentsHashMap.put(productId,component);
+        return true;
+    }
     public List<Product> getProductList() {
         return productList;
     }

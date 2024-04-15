@@ -31,6 +31,35 @@ public class MainController {
         }
 //        addData();
 //        DataController.saveProducts(productsInShop.getProductList());
+//        List<ProductEnum> components = new ArrayList<>();
+//        for(ComputerComponents component : ComputerComponents.values()) {
+//            for(Product p : productsInShop.getProductList(component)) {
+//                components.add(new ProductEnum(p.getId(),component));
+//            }
+//        }
+//        for(SmartphoneComponents component : SmartphoneComponents.values()) {
+//            for(Product p : productsInShop.getProductList(component)) {
+//                components.add(new ProductEnum(p.getId(),component));
+//            }
+//        }
+//        DataController.saveComponents(components);
+        try {
+            for(ProductEnum productEnum : DataController.getComponents()) {
+                if(productEnum.getComputerComponent() != null) {
+                    if(!productsInShop.addProductComponents(productEnum.getId(),productEnum.getComputerComponent())) {
+                        throw new Exception("Błąd wczytania komponentów komputera");
+                    }
+                    continue;
+                }
+                if(!productsInShop.addProductComponents(productEnum.getId(),productEnum.getSmartphoneComponent())) {
+                    throw new Exception("Błąd wczytania komponentów telefonu");
+                }
+
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
     // rozpoczęcie działania kontrolera
     public void main() {
@@ -559,7 +588,6 @@ public class MainController {
             argsToInvoke = getListOfObjects(index);
             return;
         }
-        Product componentToChange = product.getPhoneCase();
         System.out.println("Wybierz nową część: ");
         List<String> options = new ArrayList<>();
         for(int i = 0; i < productList.size(); i++) {
@@ -583,8 +611,8 @@ public class MainController {
             }
         }
         Product newPart = productList.get(chosenOption - 1);
-        float amountDiffrence = newPart.getPrice() - componentToChange.getPrice();
-        product.setPhoneCase(componentToChange);
+        float amountDiffrence = newPart.getPrice() - product.getPhoneCase().getPrice();
+        product.setPhoneCase(newPart.copy());
         product.setPrice(product.getPrice() + amountDiffrence);
         methodsToInvoke.add("singleProduct");
         argsToInvoke = getListOfObjects(index);

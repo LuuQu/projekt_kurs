@@ -44,7 +44,7 @@ public class OrderProcessor extends Thread {
                 addProductToList(setAmountOfProduct(computer.getCharger(),1),listOfItemsToBuy);
             }
             if(p instanceof Smartphone smartphone) {
-                addProductToList(smartphone.getPhoneCase(),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(smartphone.getPhoneCase(),1),listOfItemsToBuy);
             }
             addProductToList(p,listOfItemsToBuy);
         }
