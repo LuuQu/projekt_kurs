@@ -86,10 +86,26 @@ public class MainController {
     //rejestracja
     private void register() {
         Person.PersonBuilder personBuilder = new Person.PersonBuilder();
-        System.out.println("Imię:");
-        personBuilder.name(getScannerString());
-        System.out.println("Nazwisko:");
-        personBuilder.lastName(getScannerString());
+        while (true) {
+            System.out.println("Imię:");
+            String name = getScannerString();
+            if(name.isEmpty()) {
+                System.out.println("Imie nie może być puste");
+                continue;
+            }
+            personBuilder.name(name);
+            break;
+        }
+        while (true) {
+            System.out.println("Nazwisko:");
+            String lastName = getScannerString();
+            if(lastName.isEmpty()) {
+                System.out.println("Nazwisko nie może być puste");
+                continue;
+            }
+            personBuilder.lastName(lastName);
+            break;
+        }
         while(true) {
             System.out.println("Login:");
             String login = getScannerString();
@@ -97,11 +113,23 @@ public class MainController {
                 System.out.println("Podany login jest już zajęty");
                 continue;
             }
+            if(login.isEmpty()) {
+                System.out.println("Login nie może być pusty");
+                continue;
+            }
             personBuilder.login(login);
             break;
         }
-        System.out.println("Hasło:");
-        personBuilder.password(getScannerString());
+        while (true) {
+            System.out.println("Hasło:");
+            String password = getScannerString();
+            if(password.isEmpty()) {
+                System.out.println("Hasło nie może być puste");
+                continue;
+            }
+            personBuilder.lastName(password);
+            break;
+        }
         users.add(personBuilder.build());
         System.out.println();
         System.out.println("Rejestracja przebiegła pomyślnie.");
