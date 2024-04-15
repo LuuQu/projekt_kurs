@@ -1,12 +1,12 @@
 package Controllers;
 
-import Model.Order;
-import Model.Product;
-import Model.ProductManager;
+import Model.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderProcessor extends Thread {
     private Order order;
@@ -15,12 +15,46 @@ public class OrderProcessor extends Thread {
         this.order = order;
         this.productManager = productManager;
     }
+    public List<Product> addProductToList(Product product, List<Product> list) {
+        var itemInList = list
+                .stream()
+                .filter(item -> item.getId() == product.getId())
+                .findFirst();
+        if(itemInList.isEmpty()) {
+            list.add(product.copy());
+            return list;
+        }
+        setAmountOfProduct(itemInList.get(),itemInList.get().getAmount() + product.getAmount());
+        return list;
+    }
+    public Product setAmountOfProduct(Product p, int amount) {
+        p.setAmount(amount);
+        return p;
+    }
     public void processOrder() {
+        List<Product> listOfItemsToBuy = new ArrayList<>();
+        for(Product p : order.getProductList()) {
+            if(p instanceof Computer computer) {
+                addProductToList(setAmountOfProduct(computer.getComputerCase(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getMotherboard(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getProcessor(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getRam(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getHardDrive(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getGraphicsCard(),1),listOfItemsToBuy);
+                addProductToList(setAmountOfProduct(computer.getCharger(),1),listOfItemsToBuy);
+            }
+            if(p instanceof Smartphone smartphone) {
+                addProductToList(smartphone.getPhoneCase(),listOfItemsToBuy);
+            }
+            addProductToList(p,listOfItemsToBuy);
+        }
         try {
-            for(Product p : order.getProductList()) {
+            for(Product p : listOfItemsToBuy) {
                 int avaiableAmount = productManager.getAmountOfProduct(p.getId());
                 if(p.getAmount() > avaiableAmount) {
                     StringBuilder builder = new StringBuilder();
+                    builder.append("Zamówienie nieudane");
+                    builder.append("\n");
                     builder.append("Brak wymagającej ilości produktu w magazynie");
                     builder.append("\n");
                     builder.append("Produkt w zamówieniu:");
@@ -33,13 +67,13 @@ public class OrderProcessor extends Thread {
                     throw new Exception(builder.toString());
                 }
             }
-            for(Product p : order.getProductList()) {
+            for(Product p : listOfItemsToBuy) {
                 productManager.removeAmountOfProduct(p);
             }
             generateInvoice();
         }
-        catch (Exception ex) {
-            System.out.println(ex);
+        catch (Exception e) {
+            System.out.println(e);
         }
     }
     public void generateInvoice() {

@@ -59,5 +59,365 @@
     "amount": 800.0,
     "date": "Apr 15, 2024, 6:24:31 PM",
     "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Andrzej",
+      "lastName": "Wajda"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 3,
+        "computerCase": {
+          "id": 1,
+          "name": "Obudowa1",
+          "price": 100.0,
+          "amount": 42,
+          "type": "product"
+        },
+        "motherboard": {
+          "id": 3,
+          "name": "Płyta główna",
+          "price": 600.0,
+          "amount": 12,
+          "type": "product"
+        },
+        "processor": {
+          "id": 5,
+          "name": "Procesor",
+          "price": 500.0,
+          "amount": 16,
+          "type": "product"
+        },
+        "ram": {
+          "id": 7,
+          "name": "Ram",
+          "price": 200.0,
+          "amount": 120,
+          "type": "product"
+        },
+        "hardDrive": {
+          "id": 9,
+          "name": "DyskSSD",
+          "price": 200.0,
+          "amount": 347,
+          "type": "product"
+        },
+        "graphicsCard": {
+          "id": 11,
+          "name": "Karta graficzna RTX4060",
+          "price": 1500.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "charger": {
+          "id": 13,
+          "name": "zasilacz 400W",
+          "price": 80.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "type": "computer"
+      },
+      {
+        "id": 7,
+        "name": "Ram",
+        "price": 200.0,
+        "amount": 120,
+        "type": "product"
+      }
+    ],
+    "amount": 33540.0,
+    "date": "Apr 15, 2024, 7:57:50 PM",
+    "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Andrzej",
+      "lastName": "Wajda"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 1,
+        "computerCase": {
+          "id": 1,
+          "name": "Obudowa1",
+          "price": 100.0,
+          "amount": 42,
+          "type": "product"
+        },
+        "motherboard": {
+          "id": 3,
+          "name": "Płyta główna",
+          "price": 600.0,
+          "amount": 12,
+          "type": "product"
+        },
+        "processor": {
+          "id": 5,
+          "name": "Procesor",
+          "price": 500.0,
+          "amount": 16,
+          "type": "product"
+        },
+        "ram": {
+          "id": 7,
+          "name": "Ram",
+          "price": 200.0,
+          "amount": 120,
+          "type": "product"
+        },
+        "hardDrive": {
+          "id": 9,
+          "name": "DyskSSD",
+          "price": 200.0,
+          "amount": 347,
+          "type": "product"
+        },
+        "graphicsCard": {
+          "id": 11,
+          "name": "Karta graficzna RTX4060",
+          "price": 1500.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "charger": {
+          "id": 13,
+          "name": "zasilacz 400W",
+          "price": 80.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "type": "computer"
+      }
+    ],
+    "amount": 3180.0,
+    "date": "Apr 15, 2024, 7:59:01 PM",
+    "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak"
+    },
+    "productList": [
+      {
+        "id": 1,
+        "name": "Obudowa1",
+        "price": 100.0,
+        "amount": 12,
+        "type": "product"
+      }
+    ],
+    "amount": 1200.0,
+    "date": "Apr 15, 2024, 8:06:06 PM",
+    "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 1,
+        "computerCase": {
+          "id": 1,
+          "name": "Obudowa1",
+          "price": 100.0,
+          "amount": 42,
+          "type": "product"
+        },
+        "motherboard": {
+          "id": 3,
+          "name": "Płyta główna",
+          "price": 600.0,
+          "amount": 12,
+          "type": "product"
+        },
+        "processor": {
+          "id": 5,
+          "name": "Procesor",
+          "price": 500.0,
+          "amount": 16,
+          "type": "product"
+        },
+        "ram": {
+          "id": 7,
+          "name": "Ram",
+          "price": 200.0,
+          "amount": 120,
+          "type": "product"
+        },
+        "hardDrive": {
+          "id": 9,
+          "name": "DyskSSD",
+          "price": 200.0,
+          "amount": 347,
+          "type": "product"
+        },
+        "graphicsCard": {
+          "id": 11,
+          "name": "Karta graficzna RTX4060",
+          "price": 1500.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "charger": {
+          "id": 13,
+          "name": "zasilacz 400W",
+          "price": 80.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "type": "computer"
+      }
+    ],
+    "amount": 3180.0,
+    "date": "Apr 15, 2024, 8:07:13 PM",
+    "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 1,
+        "computerCase": {
+          "id": 1,
+          "name": "Obudowa1",
+          "price": 100.0,
+          "amount": 42,
+          "type": "product"
+        },
+        "motherboard": {
+          "id": 3,
+          "name": "Płyta główna",
+          "price": 600.0,
+          "amount": 12,
+          "type": "product"
+        },
+        "processor": {
+          "id": 5,
+          "name": "Procesor",
+          "price": 500.0,
+          "amount": 16,
+          "type": "product"
+        },
+        "ram": {
+          "id": 7,
+          "name": "Ram",
+          "price": 200.0,
+          "amount": 120,
+          "type": "product"
+        },
+        "hardDrive": {
+          "id": 9,
+          "name": "DyskSSD",
+          "price": 200.0,
+          "amount": 347,
+          "type": "product"
+        },
+        "graphicsCard": {
+          "id": 11,
+          "name": "Karta graficzna RTX4060",
+          "price": 1500.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "charger": {
+          "id": 13,
+          "name": "zasilacz 400W",
+          "price": 80.0,
+          "amount": 15,
+          "type": "product"
+        },
+        "type": "computer"
+      }
+    ],
+    "amount": 3180.0,
+    "date": "Apr 15, 2024, 8:10:26 PM",
+    "gmt": "+02:00"
+  },
+  {
+    "person": {
+      "name": "Jan",
+      "lastName": "Nowak"
+    },
+    "productList": [
+      {
+        "id": 15,
+        "name": "komputer",
+        "price": 3180.0,
+        "amount": 1,
+        "computerCase": {
+          "id": 1,
+          "name": "Obudowa1",
+          "price": 100.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "motherboard": {
+          "id": 3,
+          "name": "Płyta główna",
+          "price": 600.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "processor": {
+          "id": 5,
+          "name": "Procesor",
+          "price": 500.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "ram": {
+          "id": 7,
+          "name": "Ram",
+          "price": 200.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "hardDrive": {
+          "id": 9,
+          "name": "DyskSSD",
+          "price": 200.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "graphicsCard": {
+          "id": 11,
+          "name": "Karta graficzna RTX4060",
+          "price": 1500.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "charger": {
+          "id": 13,
+          "name": "zasilacz 400W",
+          "price": 80.0,
+          "amount": 1,
+          "type": "product"
+        },
+        "type": "computer"
+      }
+    ],
+    "amount": 3180.0,
+    "date": "Apr 15, 2024, 8:15:11 PM",
+    "gmt": "+02:00"
   }
 ]
