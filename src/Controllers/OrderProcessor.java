@@ -7,7 +7,6 @@ import Model.ProductManager;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Scanner;
 
 public class OrderProcessor extends Thread {
     private Order order;
@@ -72,9 +71,6 @@ public class OrderProcessor extends Thread {
         System.out.println("Cena całkowita: ");
         System.out.println(order.getAmount());
         System.out.println();
-        System.out.println("Naciśnij enter, aby kontynuować...");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
     }
     @Override
     public void run() {

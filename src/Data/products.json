@@ -3,96 +3,216 @@
     "id": 0,
     "name": "Wiatrak",
     "price": 100.0,
-    "amount": 32
+    "amount": 36,
+    "type": "product"
   },
   {
     "id": 1,
     "name": "Obudowa1",
     "price": 100.0,
-    "amount": 42
+    "amount": 42,
+    "type": "product"
   },
   {
     "id": 2,
     "name": "Obudowa2",
     "price": 150.0,
-    "amount": 23
+    "amount": 23,
+    "type": "product"
   },
   {
     "id": 3,
     "name": "Płyta główna",
     "price": 600.0,
-    "amount": 12
+    "amount": 12,
+    "type": "product"
   },
   {
     "id": 4,
     "name": "Płyta główna2",
     "price": 900.0,
-    "amount": 8
+    "amount": 8,
+    "type": "product"
   },
   {
     "id": 5,
     "name": "Procesor",
     "price": 500.0,
-    "amount": 16
+    "amount": 16,
+    "type": "product"
   },
   {
     "id": 6,
     "name": "Procesor2",
     "price": 800.0,
-    "amount": 15
+    "amount": 15,
+    "type": "product"
   },
   {
     "id": 7,
     "name": "Ram",
     "price": 200.0,
-    "amount": 120
+    "amount": 120,
+    "type": "product"
   },
   {
     "id": 8,
     "name": "Ram2",
     "price": 300.0,
-    "amount": 86
+    "amount": 86,
+    "type": "product"
   },
   {
     "id": 9,
     "name": "DyskSSD",
     "price": 200.0,
-    "amount": 347
+    "amount": 347,
+    "type": "product"
   },
   {
     "id": 10,
     "name": "DyshHDD",
     "price": 50.0,
-    "amount": 86
+    "amount": 86,
+    "type": "product"
   },
   {
     "id": 11,
     "name": "Karta graficzna RTX4060",
     "price": 1500.0,
-    "amount": 15
+    "amount": 15,
+    "type": "product"
   },
   {
     "id": 12,
     "name": "Karta graficzna Radeon RX660",
     "price": 1000.0,
-    "amount": 43
+    "amount": 43,
+    "type": "product"
   },
   {
     "id": 13,
     "name": "zasilacz 400W",
     "price": 80.0,
-    "amount": 15
+    "amount": 15,
+    "type": "product"
   },
   {
     "id": 14,
     "name": "zasilacz 600W",
     "price": 250.0,
-    "amount": 43
+    "amount": 43,
+    "type": "product"
   },
   {
     "id": 15,
     "name": "komputer",
     "price": 3180.0,
-    "amount": 4
+    "amount": 5,
+    "computerCase": {
+      "id": 1,
+      "name": "Obudowa1",
+      "price": 100.0,
+      "amount": 42,
+      "type": "product"
+    },
+    "motherboard": {
+      "id": 3,
+      "name": "Płyta główna",
+      "price": 600.0,
+      "amount": 12,
+      "type": "product"
+    },
+    "processor": {
+      "id": 5,
+      "name": "Procesor",
+      "price": 500.0,
+      "amount": 16,
+      "type": "product"
+    },
+    "ram": {
+      "id": 7,
+      "name": "Ram",
+      "price": 200.0,
+      "amount": 120,
+      "type": "product"
+    },
+    "hardDrive": {
+      "id": 9,
+      "name": "DyskSSD",
+      "price": 200.0,
+      "amount": 347,
+      "type": "product"
+    },
+    "graphicsCard": {
+      "id": 11,
+      "name": "Karta graficzna RTX4060",
+      "price": 1500.0,
+      "amount": 15,
+      "type": "product"
+    },
+    "charger": {
+      "id": 13,
+      "name": "zasilacz 400W",
+      "price": 80.0,
+      "amount": 15,
+      "type": "product"
+    },
+    "type": "computer"
+  },
+  {
+    "id": 16,
+    "name": "Zielone etui",
+    "price": 20.0,
+    "amount": 400,
+    "type": "product"
+  },
+  {
+    "id": 17,
+    "name": "Niebieskie etui",
+    "price": 30.0,
+    "amount": 500,
+    "type": "product"
+  },
+  {
+    "id": 18,
+    "name": "Czerwone etui",
+    "price": 40.0,
+    "amount": 600,
+    "type": "product"
+  },
+  {
+    "id": 19,
+    "name": "Czarne etui",
+    "price": 50.0,
+    "amount": 700,
+    "type": "product"
+  },
+  {
+    "id": 20,
+    "name": "Białe etui",
+    "price": 60.0,
+    "amount": 800,
+    "type": "product"
+  },
+  {
+    "color": {
+      "color_red": 255,
+      "color_green": 128,
+      "color_blue": 0
+    },
+    "batteryCapacity": 5000,
+    "phoneCase": {
+      "id": 16,
+      "name": "Zielone etui",
+      "price": 20.0,
+      "amount": 400,
+      "type": "product"
+    },
+    "id": 21,
+    "name": "Telefon",
+    "price": 800.0,
+    "amount": 23,
+    "type": "smartphone"
   }
 ]

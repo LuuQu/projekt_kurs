@@ -1,12 +1,15 @@
 package Controllers;
 
-import Model.Order;
-import Model.Person;
-import Model.Product;
+import JsonAdapters.ColorAdapter;
+import JsonAdapters.ComputerAdapter;
+import JsonAdapters.ProductAdapter;
+import JsonAdapters.SmartphoneAdapter;
+import Model.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -78,7 +81,12 @@ public class DataController {
     }
     public static List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
+                .registerTypeAdapter(Computer.class, new ComputerAdapter())
+                .registerTypeAdapter(Product.class, new ProductAdapter())
+                .registerTypeAdapter(Color.class, new ColorAdapter())
+                .create();
         createFileIfDontExist(productsPATH);
 
         productsLock.lock();
@@ -97,7 +105,13 @@ public class DataController {
         return products;
     }
     public static void saveProducts(List<Product> persons) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
+                .registerTypeAdapter(Computer.class, new ComputerAdapter())
+                .registerTypeAdapter(Product.class, new ProductAdapter())
+                .registerTypeAdapter(Color.class, new ColorAdapter())
+                .setPrettyPrinting()
+                .create();
         productsLock.lock();
         try (FileWriter writer = new FileWriter(productsPATH)) {
             gson.toJson(persons, writer);
@@ -116,7 +130,12 @@ public class DataController {
     }
     public static List<Order> getOrders() {
         List<Order> orders = new ArrayList<>();
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
+                .registerTypeAdapter(Computer.class, new ComputerAdapter())
+                .registerTypeAdapter(Product.class, new ProductAdapter())
+                .registerTypeAdapter(Color.class, new ColorAdapter())
+                .create();
         createFileIfDontExist(ordersPATH);
         ordersLock.lock();
         try (FileReader reader = new FileReader(ordersPATH)) {
@@ -134,7 +153,13 @@ public class DataController {
         return orders;
     }
     public static void saveAllOrders(List<Order> persons) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
+                .registerTypeAdapter(Computer.class, new ComputerAdapter())
+                .registerTypeAdapter(Product.class, new ProductAdapter())
+                .registerTypeAdapter(Color.class, new ColorAdapter())
+                .setPrettyPrinting()
+                .create();
         ordersLock.lock();
         try (FileWriter writer = new FileWriter(ordersPATH)) {
             gson.toJson(persons, writer);

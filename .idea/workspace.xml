@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień">
+    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="Wielowątkowość w przetwarzaniu zamówień (Task 11)&#10;OrderProcessor -&gt; wątek&#10;lock/unlock w dotępie do plików">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/DataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/orders.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/orders.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/products.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Smartphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Smartphone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,22 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DataController.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/LuQ/Downloads/gson-2.8.2.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DataController.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "18",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/LuQ/Downloads/gson-2.8.2.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -182,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712865151582</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Wielowątkowość w przetwarzaniu zamówień (Task 11)&#10;OrderProcessor -&gt; wątek&#10;lock/unlock w dotępie do plików">
+      <option name="closed" value="true" />
+      <created>1713020079062</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713020079062</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -198,6 +211,23 @@
     <MESSAGE value="interfejs part 3 (Task 7) &#10;kupowanie przedmiotów&#10;modyfikacja komputera" />
     <MESSAGE value="czas zamówienia (Task 8)" />
     <MESSAGE value="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień" />
-    <option name="LAST_COMMIT_MESSAGE" value="zapis/odczyt danych z plików (Task 10)&#10;zapis/odczyt osób, produktów oraz wykonanych zamówień" />
+    <MESSAGE value="Wielowątkowość w przetwarzaniu zamówień (Task 11)&#10;OrderProcessor -&gt; wątek&#10;lock/unlock w dotępie do plików" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wielowątkowość w przetwarzaniu zamówień (Task 11)&#10;OrderProcessor -&gt; wątek&#10;lock/unlock w dotępie do plików" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/JsonAdapters/ProductAdapter.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controllers/OrderProcessor.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

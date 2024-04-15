@@ -1,7 +1,7 @@
 package Model;
 
 import Enums.ComputerComponents;
-import Model.*;
+import Enums.SmartphoneComponents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,9 +12,11 @@ public class ProductManager {
     private int availableId = 0;
     private final List<Product> productList;
     private final HashMap<Integer,ComputerComponents> computerComponentsHashMap;
+    private final HashMap<Integer,SmartphoneComponents> smartphoneComponentsHashMap;
     public ProductManager() {
         productList = new ArrayList<>();
         computerComponentsHashMap = new HashMap<>();
+        smartphoneComponentsHashMap = new HashMap<>();
     }
     public boolean addProduct(String name, float price, int amount) {
         return this.addProduct(new Product(availableId,name,price,amount));
@@ -25,6 +27,16 @@ public class ProductManager {
     private boolean addProduct(Product product, ComputerComponents component) {
         if(this.addProduct(product)) {
             computerComponentsHashMap.put(product.getId(),component);
+            return true;
+        }
+        return false;
+    }
+    public boolean addProduct(String name, float price, int amount,SmartphoneComponents component) {
+        return this.addProduct(new Product(availableId,name,price,amount),component);
+    }
+    private boolean addProduct(Product product, SmartphoneComponents component) {
+        if(this.addProduct(product)) {
+            smartphoneComponentsHashMap.put(product.getId(),component);
             return true;
         }
         return false;
@@ -78,6 +90,10 @@ public class ProductManager {
         computerComponentsHashMap.put(id,component);
         return this.updateProduct(id,name,price,amount);
     }
+    public boolean updateProduct(int id, String name, float price, int amount,SmartphoneComponents component) {
+        smartphoneComponentsHashMap.put(id,component);
+        return this.updateProduct(id,name,price,amount);
+    }
     public boolean updateProduct(Product product) {
         productList.stream()
                 .filter(item -> item.getId() == product.getId())
@@ -105,12 +121,28 @@ public class ProductManager {
         computerComponentsHashMap.put(product.getId(), component);
         return this.updateProduct(product);
     }
+    public boolean updateProduct(Product product,SmartphoneComponents component) {
+        smartphoneComponentsHashMap.put(product.getId(), component);
+        return this.updateProduct(product);
+    }
     public List<Product> getProductList() {
         return productList;
     }
     public List<Product> getProductList(ComputerComponents component) {
         List<Product> result = new ArrayList<>();
         for (Map.Entry<Integer, ComputerComponents> entry : computerComponentsHashMap.entrySet()) {
+            if(entry.getValue() == component) {
+                productList.stream()
+                        .filter(product -> product.getId() == entry.getKey())
+                        .findFirst()
+                        .ifPresent(result::add);
+            }
+        }
+        return result;
+    }
+    public List<Product> getProductList(SmartphoneComponents component) {
+        List<Product> result = new ArrayList<>();
+        for (Map.Entry<Integer, SmartphoneComponents> entry : smartphoneComponentsHashMap.entrySet()) {
             if(entry.getValue() == component) {
                 productList.stream()
                         .filter(product -> product.getId() == entry.getKey())

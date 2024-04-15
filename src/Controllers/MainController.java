@@ -1,11 +1,15 @@
 package Controllers;
 
 import Enums.ComputerComponents;
+import Enums.SmartphoneComponents;
 import Enums.TypeOfPage;
 import Model.*;
 
+import java.awt.*;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Queue;
 import java.util.*;
 
 public class MainController {
@@ -25,8 +29,8 @@ public class MainController {
         for(Product p : DataController.getProducts()) {
             productsInShop.addProduct(p);
         }
-        //addData();
-        //DataController.saveProducts(productsInShop.getProductList());
+//        addData();
+//        DataController.saveProducts(productsInShop.getProductList());
     }
     // rozpoczęcie działania kontrolera
     public void main() {
@@ -246,6 +250,14 @@ public class MainController {
             System.out.print("Zasilacz -> ");
             System.out.println(computer.getCharger().printLabel());
         }
+        if(product instanceof Smartphone) {
+            Smartphone smartphone = (Smartphone) product;
+            System.out.print("Kolor -> ");
+            System.out.println(smartphone.printColor());
+            System.out.print("Pojemność baterii -> ");
+            System.out.println(smartphone.getBatteryCapacity());
+            System.out.print("Etui -> " + smartphone.getPhoneCase().printLabel());
+        }
         System.out.println();
         List<String> options = new ArrayList<>();
         HashMap<Character,String> methodOptions = new HashMap<>();
@@ -263,30 +275,41 @@ public class MainController {
             methodOptions.put('1',"setAmountOfProductToBuy");
             methodArguments.put('1',getListOfObjects(index));
         }
-        if(product instanceof Computer) {
-            options.add("2. Zmień obudowę");
-            options.add("3. Zmień płytę główną");
-            options.add("4. Zmień procesor");
-            options.add("5. Zmień pamięć RAM");
-            options.add("6. Zmień dysk twardy");
-            options.add("7. Zmień kartę graficzną");
-            options.add("8. Zmień zasilacz");
-            methodOptions.put('2',"changeComponentOfComputer");
-            methodArguments.put('2',getListOfObjects(index,ComputerComponents.COMPUTER_CASE, 1));
-            methodOptions.put('3',"changeComponentOfComputer");
-            methodArguments.put('3',getListOfObjects(index,ComputerComponents.MOTHERBOARD, 1));
-            methodOptions.put('4',"changeComponentOfComputer");
-            methodArguments.put('4',getListOfObjects(index,ComputerComponents.PROCESSOR, 1));
-            methodOptions.put('5',"changeComponentOfComputer");
-            methodArguments.put('5',getListOfObjects(index,ComputerComponents.RAM, 1));
-            methodOptions.put('6',"changeComponentOfComputer");
-            methodArguments.put('6',getListOfObjects(index,ComputerComponents.HARD_DRIVE, 1));
-            methodOptions.put('7',"changeComponentOfComputer");
-            methodArguments.put('7',getListOfObjects(index,ComputerComponents.GRAPHICS_CARD, 1));
-            methodOptions.put('8',"changeComponentOfComputer");
-            methodArguments.put('8',getListOfObjects(index,ComputerComponents.CHARGER, 1));
-        }
         if(activePage == TypeOfPage.CART) {
+            if(product instanceof Computer) {
+                options.add("2. Zmień obudowę");
+                options.add("3. Zmień płytę główną");
+                options.add("4. Zmień procesor");
+                options.add("5. Zmień pamięć RAM");
+                options.add("6. Zmień dysk twardy");
+                options.add("7. Zmień kartę graficzną");
+                options.add("8. Zmień zasilacz");
+                methodOptions.put('2',"changeComponentOfComputer");
+                methodArguments.put('2',getListOfObjects(index,ComputerComponents.COMPUTER_CASE, 1));
+                methodOptions.put('3',"changeComponentOfComputer");
+                methodArguments.put('3',getListOfObjects(index,ComputerComponents.MOTHERBOARD, 1));
+                methodOptions.put('4',"changeComponentOfComputer");
+                methodArguments.put('4',getListOfObjects(index,ComputerComponents.PROCESSOR, 1));
+                methodOptions.put('5',"changeComponentOfComputer");
+                methodArguments.put('5',getListOfObjects(index,ComputerComponents.RAM, 1));
+                methodOptions.put('6',"changeComponentOfComputer");
+                methodArguments.put('6',getListOfObjects(index,ComputerComponents.HARD_DRIVE, 1));
+                methodOptions.put('7',"changeComponentOfComputer");
+                methodArguments.put('7',getListOfObjects(index,ComputerComponents.GRAPHICS_CARD, 1));
+                methodOptions.put('8',"changeComponentOfComputer");
+                methodArguments.put('8',getListOfObjects(index,ComputerComponents.CHARGER, 1));
+            }
+            if(product instanceof Smartphone) {
+                options.add("2. Zmień kolor Telefonu");
+                options.add("3. Zmień pojemność baterii");
+                options.add("4. Zmień etui");
+                methodOptions.put('2',"changeComponentOfSmartPhone");
+                methodArguments.put('2',getListOfObjects(index,SmartphoneComponents.COLOR, 1));
+                methodOptions.put('3',"changeComponentOfSmartPhone");
+                methodArguments.put('3',getListOfObjects(index,SmartphoneComponents.BATTERY_CAPACITY, 1));
+                methodOptions.put('4',"changeComponentOfSmartPhone");
+                methodArguments.put('4',getListOfObjects(index,SmartphoneComponents.SMARTPHONE_CASE, 1));
+            }
             options.add("9. Usuń produkt z koszyka");
             methodOptions.put('9',"deleteProduct"); //usunięcie przedmiotu - enum
             methodArguments.put('9',getListOfObjects(index));
@@ -459,7 +482,86 @@ public class MainController {
         methodsToInvoke.add("singleProduct");
         argsToInvoke = getListOfObjects(index);
     }
+    private void changeComponentOfSmartPhone(Integer index, SmartphoneComponents smartphoneComponents, Integer page) {
+        Smartphone product;
+        try
+        {
+            product = (Smartphone)cart.getProductList().get(index);
+        }
+        catch (Exception e) {
+            System.out.println("Produkt poza zasięgiem");
+            methodsToInvoke.add("listWithProducts");
+            argsToInvoke = getListOfObjects((cart.getProductList().size() - 1) % 10 + 1);
+            return;
+        }
+        clearConsole();
+        printMenu();
+        if(smartphoneComponents == SmartphoneComponents.COLOR) {
+            System.out.println("Podaj nasycenie koloru czerwonego (0 - 255)");
+            int red = getScannerInt(0,255);
+            System.out.println("Podaj nasycenie koloru zielonego (0 - 255)");
+            int green = getScannerInt(0,255);
+            System.out.println("Podaj nasycenie koloru niebieskiego (0 - 255)");
+            int blue = getScannerInt(0,255);
+            product.setColor(new Color(red, green, blue));
+            methodsToInvoke.add("singleProduct");
+            argsToInvoke = getListOfObjects(index);
+            return;
+        }
+        if(smartphoneComponents == SmartphoneComponents.BATTERY_CAPACITY) {
+            System.out.println("Podaj pojemność baterii (3000 - 10 000");
+            product.setBatteryCapacity(getScannerInt(3000,10000));
+            methodsToInvoke.add("singleProduct");
+            argsToInvoke = getListOfObjects(index);
+            return;
+        }
 
+        List<Product> productList = productsInShop.getProductList(smartphoneComponents)
+                .stream()
+                .filter(item -> item.getId() != product.getId())
+                .toList();
+        if(productList.isEmpty()) {
+            System.out.println("Brak innych opcji w sklepie dla wybranej części komputera.");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            methodsToInvoke.add("singleProduct");
+            argsToInvoke = getListOfObjects(index);
+            return;
+        }
+        Product componentToChange = product.getPhoneCase();
+        System.out.println("Wybierz nową część: ");
+        List<String> options = new ArrayList<>();
+        for(int i = 0; i < productList.size(); i++) {
+            options.add((i+1) + ". " + productList.get(i).printLabel());
+        }
+        printOptions(options);
+        Scanner scanner = new Scanner(System.in);
+        int chosenOption;
+        while (true) {
+            try {
+                System.out.println();
+                System.out.print("-> ");
+                chosenOption = scanner.nextInt();
+                if(chosenOption < 1 || chosenOption > productList.size() + 1){
+                    throw new Exception();
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Wybierz jedną z opcji 1 - " + (productList.size() + 1));
+            }
+        }
+        Product newPart = productList.get(chosenOption - 1);
+        float amountDiffrence = newPart.getPrice() - componentToChange.getPrice();
+        product.setPhoneCase(componentToChange);
+        product.setPrice(product.getPrice() + amountDiffrence);
+        methodsToInvoke.add("singleProduct");
+        argsToInvoke = getListOfObjects(index);
+
+    }
     private void processOrder() {
         OrderProcessor orderProcessor = new OrderProcessor(new Order(loggedInPerson.copySimplifiedPerson(),cart.getProductList(), LocalDateTime.now()),productsInShop);
         orderProcessor.start();
@@ -469,7 +571,6 @@ public class MainController {
     }
 
     ////////////     funkcje pomocnicze
-
 
     //funkcja do wylogowania
     private void logout() {
@@ -547,12 +648,45 @@ public class MainController {
                 .charger(charger)
                 .build();
         productsInShop.addProduct(computer);
+        productsInShop.addProduct("Zielone etui",20,400,SmartphoneComponents.SMARTPHONE_CASE);
+        productsInShop.addProduct("Niebieskie etui",30,500,SmartphoneComponents.SMARTPHONE_CASE);
+        productsInShop.addProduct("Czerwone etui",40,600,SmartphoneComponents.SMARTPHONE_CASE);
+        productsInShop.addProduct("Czarne etui",50,700,SmartphoneComponents.SMARTPHONE_CASE);
+        productsInShop.addProduct("Białe etui",60,800,SmartphoneComponents.SMARTPHONE_CASE);
+        Smartphone smartphone = new Smartphone(22,
+                "Telefon",
+                800,
+                25,
+                new Color(255,128,0),
+                5000,
+                productsInShop.getProductList(SmartphoneComponents.SMARTPHONE_CASE).get(0));
+        productsInShop.addProduct(smartphone);
     }
     //wczytywanie pojedyńczego stringa
     private String getScannerString() {
         System.out.print("-> ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+    private int getScannerInt(int min, int max) {
+        int result;
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            try {
+                System.out.print("-> ");
+                result = scanner.nextInt();
+                if(result >= min && result <= max) {
+                    break;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Podaj liczbę od " + min + " do " + max);
+            }
+            finally {
+                scanner.nextLine();
+            }
+        }
+        return result;
     }
     //drukowanie nagłówka każdego okienka
     private void printMenuAndOptions(List<String> options) {
