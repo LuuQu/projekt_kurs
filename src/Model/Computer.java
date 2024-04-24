@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public class Computer extends Electronics {
     private Product computerCase;
     private Product motherboard;
@@ -114,6 +116,26 @@ public class Computer extends Electronics {
                 this.hardDrive,
                 this.graphicsCard,
                 this.charger);
+    }
+    @Override
+    public List<Product> addProductToList(List<Product> list) {
+        computerCase.setAmount(1);
+        motherboard.setAmount(1);
+        processor.setAmount(1);
+        ram.setAmount(1);
+        hardDrive.setAmount(1);
+        graphicsCard.setAmount(1);
+        charger.setAmount(1);
+
+        super.addProductToList(list);
+        computerCase.addProductToList(list);
+        motherboard.addProductToList(list);
+        processor.addProductToList(list);
+        ram.addProductToList(list);
+        hardDrive.addProductToList(list);
+        graphicsCard.addProductToList(list);
+        charger.addProductToList(list);
+        return list;
     }
     public static class ComputerBuilder {
         private final boolean[] basicAssigned = new boolean[4];

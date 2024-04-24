@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Product {
@@ -44,6 +45,20 @@ public class Product {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+    public List<Product> addProductToList(List<Product> list) {
+        var itemInList = list
+                .stream()
+                .filter(item -> item.getId() == id)
+                .findFirst();
+        if(itemInList.isEmpty()) {
+            list.add(this.copy());
+            return list;
+        }
+        Product p = itemInList.get();
+        int newAmount = p.getAmount() + amount;
+        p.setAmount(newAmount);
+        return list;
     }
     public Product copy() {
         return new Product(this.id,this.name,this.price,this.amount);

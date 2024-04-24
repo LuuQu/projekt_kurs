@@ -15,38 +15,10 @@ public class OrderProcessor extends Thread {
         this.order = order;
         this.productManager = productManager;
     }
-    public List<Product> addProductToList(Product product, List<Product> list) {
-        var itemInList = list
-                .stream()
-                .filter(item -> item.getId() == product.getId())
-                .findFirst();
-        if(itemInList.isEmpty()) {
-            list.add(product.copy());
-            return list;
-        }
-        setAmountOfProduct(itemInList.get(),itemInList.get().getAmount() + product.getAmount());
-        return list;
-    }
-    public Product setAmountOfProduct(Product p, int amount) {
-        p.setAmount(amount);
-        return p;
-    }
     public void processOrder() {
         List<Product> listOfItemsToBuy = new ArrayList<>();
         for(Product p : order.getProductList()) {
-            if(p instanceof Computer computer) {
-                addProductToList(setAmountOfProduct(computer.getComputerCase(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getMotherboard(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getProcessor(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getRam(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getHardDrive(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getGraphicsCard(),1),listOfItemsToBuy);
-                addProductToList(setAmountOfProduct(computer.getCharger(),1),listOfItemsToBuy);
-            }
-            if(p instanceof Smartphone smartphone) {
-                addProductToList(setAmountOfProduct(smartphone.getPhoneCase(),1),listOfItemsToBuy);
-            }
-            addProductToList(p,listOfItemsToBuy);
+            p.addProductToList(listOfItemsToBuy);
         }
         try {
             for(Product p : listOfItemsToBuy) {

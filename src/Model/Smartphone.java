@@ -1,6 +1,7 @@
 package Model;
 
 import java.awt.*;
+import java.util.List;
 
 public class Smartphone extends Electronics{
     private Color color;
@@ -42,6 +43,13 @@ public class Smartphone extends Electronics{
                 this.color,
                 this.batteryCapacity,
                 this.phoneCase);
+    }
+    @Override
+    public java.util.List<Product> addProductToList(List<Product> list) {
+        phoneCase.setAmount(1);
+        super.addProductToList(list);
+        phoneCase.addProductToList(list);
+        return list;
     }
     public void setColor(Color color) {
         this.color = color;
