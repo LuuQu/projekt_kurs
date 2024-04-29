@@ -29,15 +29,15 @@ public class DataController {
     private static final ReentrantLock ordersLock = new ReentrantLock();
     private static final ReentrantLock ordersAddSingleLock = new ReentrantLock();
     private static final String ordersPATH = "src/data/orders.json";
-    private static final ReentrantLock componenetsLock = new ReentrantLock();
-    private static final ReentrantLock componenetsAddSingleLock = new ReentrantLock();
-    private static final String componenetsPATH = "src/data/components.json";
+    private static final ReentrantLock componentsLock = new ReentrantLock();
+    private static final ReentrantLock componentsAddSingleLock = new ReentrantLock();
+    private static final String componentsPATH = "src/data/components.json";
 
     public DataController() {
         createFileIfDontExist(userDataPATH);
         createFileIfDontExist(productsPATH);
         createFileIfDontExist(ordersPATH);
-        createFileIfDontExist(componenetsPATH);
+        createFileIfDontExist(componentsPATH);
     }
 
     //Użytkownicy
@@ -188,31 +188,31 @@ public class DataController {
 
     //Części smartfona/komputera
     public static void saveNewComponent(ProductEnum component) {
-        componenetsAddSingleLock.lock();
+        componentsAddSingleLock.lock();
         List<ProductEnum> items = getComponents();
         items.add(component);
         saveComponents(items);
-        componenetsAddSingleLock.unlock();
+        componentsAddSingleLock.unlock();
     }
 
     public static List<ProductEnum> getComponents() {
         List<ProductEnum> items = new ArrayList<>();
         Gson gson = new Gson();
-        createFileIfDontExist(componenetsPATH);
-        componenetsLock.lock();
-        try (FileReader reader = new FileReader(componenetsPATH)) {
+        createFileIfDontExist(componentsPATH);
+        componentsLock.lock();
+        try (FileReader reader = new FileReader(componentsPATH)) {
             Type listType = new TypeToken<List<ProductEnum>>() {
             }.getType();
             List<ProductEnum> itemsInJson = gson.fromJson(reader, listType);
             if (itemsInJson == null) {
-                componenetsLock.unlock();
+                componentsLock.unlock();
                 return items;
             }
             items.addAll(itemsInJson);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        componenetsLock.unlock();
+        componentsLock.unlock();
         return items;
     }
 
@@ -220,13 +220,13 @@ public class DataController {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
-        componenetsLock.lock();
-        try (FileWriter writer = new FileWriter(componenetsPATH)) {
+        componentsLock.lock();
+        try (FileWriter writer = new FileWriter(componentsPATH)) {
             gson.toJson(components, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        componenetsLock.unlock();
+        componentsLock.unlock();
     }
 
     //Pomocnicze
@@ -235,7 +235,7 @@ public class DataController {
             case userDataPATH -> userDataLock.lock();
             case productsPATH -> productsLock.lock();
             case ordersPATH -> ordersLock.lock();
-            case componenetsPATH -> componenetsLock.lock();
+            case componentsPATH -> componentsLock.lock();
         }
         File file = new File(path);
         if (!file.exists()) {
@@ -249,7 +249,7 @@ public class DataController {
             case userDataPATH -> userDataLock.unlock();
             case productsPATH -> productsLock.unlock();
             case ordersPATH -> ordersLock.unlock();
-            case componenetsPATH -> componenetsLock.unlock();
+            case componentsPATH -> componentsLock.unlock();
         }
     }
 }
