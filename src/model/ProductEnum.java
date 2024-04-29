@@ -12,10 +12,12 @@ public class ProductEnum {
         this.id = id;
         this.computerComponent = computerComponent;
     }
+
     public ProductEnum(int id, SmartphoneComponents smartphoneComponent) {
         this.id = id;
         this.smartphoneComponent = smartphoneComponent;
     }
+
     public int getId() {
         return id;
     }

@@ -31,6 +31,7 @@ public class Computer extends Electronics {
         this.graphicsCard = graphicsCard;
         this.charger = charger;
     }
+
     public Computer(ComputerBuilder computerBuilder) {
         this(computerBuilder.id,
                 computerBuilder.name,
@@ -44,6 +45,7 @@ public class Computer extends Electronics {
                 computerBuilder.graphicsCard,
                 computerBuilder.charger);
     }
+
     public Computer(int id, String name, float price, int amount) {
         super(id, name, price, amount);
     }
@@ -103,6 +105,7 @@ public class Computer extends Electronics {
     public void setCharger(Product charger) {
         this.charger = charger;
     }
+
     @Override
     public Computer copy() {
         return new Computer(this.getId(),
@@ -117,6 +120,7 @@ public class Computer extends Electronics {
                 this.graphicsCard,
                 this.charger);
     }
+
     @Override
     public List<Product> addProductToList(List<Product> list) {
         computerCase.setAmount(1);
@@ -137,6 +141,7 @@ public class Computer extends Electronics {
         charger.addProductToList(list);
         return list;
     }
+
     public static class ComputerBuilder {
         private final boolean[] basicAssigned = new boolean[4];
         private int id;
@@ -150,57 +155,69 @@ public class Computer extends Electronics {
         private Product hardDrive;
         private Product graphicsCard;
         private Product charger;
+
         public ComputerBuilder id(int id) {
             this.id = id;
             basicAssigned[0] = true;
             return this;
         }
+
         public ComputerBuilder name(String name) {
             this.name = name;
             basicAssigned[1] = true;
             return this;
         }
+
         public ComputerBuilder price(float price) {
             this.price = price;
             basicAssigned[2] = true;
             return this;
         }
+
         public ComputerBuilder amount(int amount) {
             this.amount = amount;
             basicAssigned[3] = true;
             return this;
         }
+
         public ComputerBuilder computerCase(Product computerCase) {
             this.computerCase = computerCase;
             return this;
         }
+
         public ComputerBuilder motherboard(Product motherboard) {
             this.motherboard = motherboard;
             return this;
         }
+
         public ComputerBuilder processor(Product processor) {
             this.processor = processor;
             return this;
         }
+
         public ComputerBuilder ram(Product ram) {
             this.ram = ram;
             return this;
         }
+
         public ComputerBuilder hardDrive(Product hardDrive) {
             this.hardDrive = hardDrive;
             return this;
         }
+
         public ComputerBuilder graphicsCard(Product graphicsCard) {
             this.graphicsCard = graphicsCard;
             return this;
         }
+
         public ComputerBuilder charger(Product charger) {
             this.charger = charger;
             return this;
         }
+
         public Computer build() {
-            for(boolean bool : basicAssigned) {
-                if(!bool) {
+            for (boolean bool : basicAssigned) {
+                if (!bool) {
                     throw new RuntimeException("Nie przypisano wszystkich podstawowych pól");
                 }
             }

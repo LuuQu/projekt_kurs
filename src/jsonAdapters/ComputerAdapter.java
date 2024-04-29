@@ -46,13 +46,13 @@ public class ComputerAdapter implements JsonSerializer<Computer>, JsonDeserializ
         jsonObject.addProperty("price", computer.getPrice());
         jsonObject.addProperty("amount", computer.getAmount());
 
-        jsonObject.add("computerCase",jsonSerializationContext.serialize(computer.getComputerCase()));
-        jsonObject.add("motherboard",jsonSerializationContext.serialize(computer.getMotherboard()));
-        jsonObject.add("processor",jsonSerializationContext.serialize(computer.getProcessor()));
-        jsonObject.add("ram",jsonSerializationContext.serialize(computer.getRam()));
-        jsonObject.add("hardDrive",jsonSerializationContext.serialize(computer.getHardDrive()));
-        jsonObject.add("graphicsCard",jsonSerializationContext.serialize(computer.getGraphicsCard()));
-        jsonObject.add("charger",jsonSerializationContext.serialize(computer.getCharger()));
+        jsonObject.add("computerCase", jsonSerializationContext.serialize(computer.getComputerCase()));
+        jsonObject.add("motherboard", jsonSerializationContext.serialize(computer.getMotherboard()));
+        jsonObject.add("processor", jsonSerializationContext.serialize(computer.getProcessor()));
+        jsonObject.add("ram", jsonSerializationContext.serialize(computer.getRam()));
+        jsonObject.add("hardDrive", jsonSerializationContext.serialize(computer.getHardDrive()));
+        jsonObject.add("graphicsCard", jsonSerializationContext.serialize(computer.getGraphicsCard()));
+        jsonObject.add("charger", jsonSerializationContext.serialize(computer.getCharger()));
         jsonObject.addProperty("type", "computer");
         return jsonObject;
     }

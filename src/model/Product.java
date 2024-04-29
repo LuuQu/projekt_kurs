@@ -15,6 +15,7 @@ public class Product {
         this.price = price;
         this.amount = amount;
     }
+
     public int getId() {
         return id;
     }
@@ -46,12 +47,13 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
     public List<Product> addProductToList(List<Product> list) {
         var itemInList = list
                 .stream()
                 .filter(item -> item.getId() == id)
                 .findFirst();
-        if(itemInList.isEmpty()) {
+        if (itemInList.isEmpty()) {
             list.add(this.copy());
             return list;
         }
@@ -60,9 +62,11 @@ public class Product {
         p.setAmount(newAmount);
         return list;
     }
+
     public Product copy() {
-        return new Product(this.id,this.name,this.price,this.amount);
+        return new Product(this.id, this.name, this.price, this.amount);
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,13 +79,15 @@ public class Product {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
     @Override
     public String toString() {
         return "Nazwa produktu: " + name + "\n"
-                +"Cena: " + price + "\n"
-                +"Ilość: " + amount + "\n"
-                +"Suma: " + price * amount;
+                + "Cena: " + price + "\n"
+                + "Ilość: " + amount + "\n"
+                + "Suma: " + price * amount;
     }
+
     public String printLabel() {
         return name + ", cena: " + price;
     }

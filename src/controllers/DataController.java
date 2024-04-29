@@ -32,12 +32,14 @@ public class DataController {
     private static final ReentrantLock componenetsLock = new ReentrantLock();
     private static final ReentrantLock componenetsAddSingleLock = new ReentrantLock();
     private static final String componenetsPATH = "src/data/components.json";
+
     public DataController() {
         createFileIfDontExist(userDataPATH);
         createFileIfDontExist(productsPATH);
         createFileIfDontExist(ordersPATH);
         createFileIfDontExist(componenetsPATH);
     }
+
     //Użytkownicy
     public static void addNewUser(Person person) {
         userDataAddSingleLock.lock();
@@ -46,15 +48,17 @@ public class DataController {
         saveUsers(users);
         userDataAddSingleLock.unlock();
     }
+
     public static List<Person> getUsers() {
         List<Person> users = new ArrayList<>();
         Gson gson = new Gson();
         createFileIfDontExist(userDataPATH);
         userDataLock.lock();
         try (FileReader reader = new FileReader(userDataPATH)) {
-            Type listType = new TypeToken<List<Person>>() {}.getType();
+            Type listType = new TypeToken<List<Person>>() {
+            }.getType();
             List<Person> usersFromJson = gson.fromJson(reader, listType);
-            if(usersFromJson == null) {
+            if (usersFromJson == null) {
                 userDataLock.unlock();
                 return users;
             }
@@ -65,6 +69,7 @@ public class DataController {
         userDataLock.unlock();
         return users;
     }
+
     public static void saveUsers(List<Person> persons) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         userDataLock.lock();
@@ -75,6 +80,7 @@ public class DataController {
         }
         userDataLock.unlock();
     }
+
     //Przedmioty w sklepie
     public static void addNewProductToShop(Product product) {
         productsAddSingleLock.lock();
@@ -83,6 +89,7 @@ public class DataController {
         saveProducts(products);
         productsAddSingleLock.unlock();
     }
+
     public static List<Product> getProducts() {
         List<Product> products = new ArrayList<>();
         Gson gson = new GsonBuilder()
@@ -95,9 +102,10 @@ public class DataController {
 
         productsLock.lock();
         try (FileReader reader = new FileReader(productsPATH)) {
-            Type listType = new TypeToken<List<Product>>() {}.getType();
+            Type listType = new TypeToken<List<Product>>() {
+            }.getType();
             List<Product> productsFromJson = gson.fromJson(reader, listType);
-            if(productsFromJson == null) {
+            if (productsFromJson == null) {
                 productsLock.unlock();
                 return products;
             }
@@ -108,6 +116,7 @@ public class DataController {
         productsLock.unlock();
         return products;
     }
+
     public static void saveProducts(List<Product> persons) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
@@ -124,6 +133,7 @@ public class DataController {
         }
         productsLock.unlock();
     }
+
     //Zamówienia
     public static void saveNewOrder(Order order) {
         ordersAddSingleLock.lock();
@@ -132,6 +142,7 @@ public class DataController {
         saveAllOrders(orders);
         ordersAddSingleLock.unlock();
     }
+
     public static List<Order> getOrders() {
         List<Order> orders = new ArrayList<>();
         Gson gson = new GsonBuilder()
@@ -143,9 +154,10 @@ public class DataController {
         createFileIfDontExist(ordersPATH);
         ordersLock.lock();
         try (FileReader reader = new FileReader(ordersPATH)) {
-            Type listType = new TypeToken<List<Order>>() {}.getType();
+            Type listType = new TypeToken<List<Order>>() {
+            }.getType();
             List<Order> ordersInJson = gson.fromJson(reader, listType);
-            if(ordersInJson == null) {
+            if (ordersInJson == null) {
                 ordersLock.unlock();
                 return orders;
             }
@@ -156,6 +168,7 @@ public class DataController {
         ordersLock.unlock();
         return orders;
     }
+
     public static void saveAllOrders(List<Order> persons) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Smartphone.class, new SmartphoneAdapter())
@@ -172,6 +185,7 @@ public class DataController {
         }
         ordersLock.unlock();
     }
+
     //Części smartfona/komputera
     public static void saveNewComponent(ProductEnum component) {
         componenetsAddSingleLock.lock();
@@ -180,15 +194,17 @@ public class DataController {
         saveComponents(items);
         componenetsAddSingleLock.unlock();
     }
+
     public static List<ProductEnum> getComponents() {
         List<ProductEnum> items = new ArrayList<>();
         Gson gson = new Gson();
         createFileIfDontExist(componenetsPATH);
         componenetsLock.lock();
         try (FileReader reader = new FileReader(componenetsPATH)) {
-            Type listType = new TypeToken<List<ProductEnum>>() {}.getType();
+            Type listType = new TypeToken<List<ProductEnum>>() {
+            }.getType();
             List<ProductEnum> itemsInJson = gson.fromJson(reader, listType);
-            if(itemsInJson == null) {
+            if (itemsInJson == null) {
                 componenetsLock.unlock();
                 return items;
             }
@@ -199,6 +215,7 @@ public class DataController {
         componenetsLock.unlock();
         return items;
     }
+
     public static void saveComponents(List<ProductEnum> components) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -211,6 +228,7 @@ public class DataController {
         }
         componenetsLock.unlock();
     }
+
     //Pomocnicze
     private static void createFileIfDontExist(String path) {
         switch (path) {
