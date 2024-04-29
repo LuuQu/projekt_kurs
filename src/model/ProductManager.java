@@ -1,7 +1,7 @@
-package Model;
+package model;
 
-import Enums.ComputerComponents;
-import Enums.SmartphoneComponents;
+import enums.ComputerComponents;
+import enums.SmartphoneComponents;
 
 import java.util.ArrayList;
 import java.util.HashMap;

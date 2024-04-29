@@ -1,10 +1,10 @@
-package Controllers;
+package controllers;
 
-import JsonAdapters.ColorAdapter;
-import JsonAdapters.ComputerAdapter;
-import JsonAdapters.ProductAdapter;
-import JsonAdapters.SmartphoneAdapter;
-import Model.*;
+import jsonAdapters.ColorAdapter;
+import jsonAdapters.ComputerAdapter;
+import jsonAdapters.ProductAdapter;
+import jsonAdapters.SmartphoneAdapter;
+import model.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -22,16 +22,16 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DataController {
     private static final ReentrantLock userDataLock = new ReentrantLock();
     private static final ReentrantLock userDataAddSingleLock = new ReentrantLock();
-    private static final String userDataPATH = "src/Data/users.json";
+    private static final String userDataPATH = "src/data/users.json";
     private static final ReentrantLock productsLock = new ReentrantLock();
     private static final ReentrantLock productsAddSingleLock = new ReentrantLock();
-    private static final String productsPATH = "src/Data/products.json";
+    private static final String productsPATH = "src/data/products.json";
     private static final ReentrantLock ordersLock = new ReentrantLock();
     private static final ReentrantLock ordersAddSingleLock = new ReentrantLock();
-    private static final String ordersPATH = "src/Data/orders.json";
+    private static final String ordersPATH = "src/data/orders.json";
     private static final ReentrantLock componenetsLock = new ReentrantLock();
     private static final ReentrantLock componenetsAddSingleLock = new ReentrantLock();
-    private static final String componenetsPATH = "src/Data/components.json";
+    private static final String componenetsPATH = "src/data/components.json";
     public DataController() {
         createFileIfDontExist(userDataPATH);
         createFileIfDontExist(productsPATH);

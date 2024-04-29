@@ -1,4 +1,4 @@
-package JsonAdapters;
+package jsonAdapters;
 
 import com.google.gson.*;
 

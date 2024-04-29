@@ -1,7 +1,7 @@
-package JsonAdapters;
+package jsonAdapters;
 
-import Model.Product;
-import Model.Smartphone;
+import model.Product;
+import model.Smartphone;
 import com.google.gson.*;
 
 import java.awt.*;

@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="Naprawa możliwości wymiany części w komputerach&#10;Zapis id - komponent do pliku">
+    <list default="true" id="c62f824d-1f67-46cf-ae88-e9879f81d2cc" name="Changes" comment="Poprawka (orderProcessor)&#10;Dodawanie do listy w klasach bazowych zamiast w orderProcessor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/OrderProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Smartphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Smartphone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -207,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713203588806</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Poprawka (orderProcessor)&#10;Dodawanie do listy w klasach bazowych zamiast w orderProcessor">
+      <option name="closed" value="true" />
+      <created>1713959035001</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713959035001</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -226,7 +233,8 @@
     <MESSAGE value="Wielowątkowość w przetwarzaniu zamówień (Task 11)&#10;OrderProcessor -&gt; wątek&#10;lock/unlock w dotępie do plików" />
     <MESSAGE value="Json Adapter + obsługa Smartfonów&#10;dodanie gmt do zamówień" />
     <MESSAGE value="Podstawowa walidacja użytkownika" />
-    <option name="LAST_COMMIT_MESSAGE" value="Podstawowa walidacja użytkownika" />
+    <MESSAGE value="Poprawka (orderProcessor)&#10;Dodawanie do listy w klasach bazowych zamiast w orderProcessor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawka (orderProcessor)&#10;Dodawanie do listy w klasach bazowych zamiast w orderProcessor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,7 +1,7 @@
-package Model;
+package model;
 
-import Enums.ComputerComponents;
-import Enums.SmartphoneComponents;
+import enums.ComputerComponents;
+import enums.SmartphoneComponents;
 
 public class ProductEnum {
     int id;

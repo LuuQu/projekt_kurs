@@ -1,9 +1,7 @@
-package Controllers;
+package controllers;
 
-import Enums.ComputerComponents;
-import Enums.SmartphoneComponents;
-import Enums.TypeOfPage;
-import Model.*;
+import enums.*;
+import model.*;
 
 import java.awt.*;
 import java.lang.reflect.Method;

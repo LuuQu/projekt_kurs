@@ -1,7 +1,7 @@
-package JsonAdapters;
+package jsonAdapters;
 
-import Model.Computer;
-import Model.Product;
+import model.Computer;
+import model.Product;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
