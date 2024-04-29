@@ -1,7 +1,7 @@
-package Model;
+package model;
 
-import Enums.ComputerComponents;
-import Enums.SmartphoneComponents;
+import enums.ComputerComponents;
+import enums.SmartphoneComponents;
 
 public class ProductEnum {
     int id;
@@ -12,10 +12,12 @@ public class ProductEnum {
         this.id = id;
         this.computerComponent = computerComponent;
     }
+
     public ProductEnum(int id, SmartphoneComponents smartphoneComponent) {
         this.id = id;
         this.smartphoneComponent = smartphoneComponent;
     }
+
     public int getId() {
         return id;
     }

@@ -1,6 +1,6 @@
-package Controllers;
+package controllers;
 
-import Model.*;
+import model.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -11,19 +11,21 @@ import java.util.List;
 public class OrderProcessor extends Thread {
     private Order order;
     private ProductManager productManager;
+
     public OrderProcessor(Order order, ProductManager productManager) {
         this.order = order;
         this.productManager = productManager;
     }
+
     public void processOrder() {
         List<Product> listOfItemsToBuy = new ArrayList<>();
-        for(Product p : order.getProductList()) {
+        for (Product p : order.getProductList()) {
             p.addProductToList(listOfItemsToBuy);
         }
         try {
-            for(Product p : listOfItemsToBuy) {
+            for (Product p : listOfItemsToBuy) {
                 int avaiableAmount = productManager.getAmountOfProduct(p.getId());
-                if(p.getAmount() > avaiableAmount) {
+                if (p.getAmount() > avaiableAmount) {
                     StringBuilder builder = new StringBuilder();
                     builder.append("Zamówienie nieudane");
                     builder.append("\n");
@@ -39,15 +41,15 @@ public class OrderProcessor extends Thread {
                     throw new Exception(builder.toString());
                 }
             }
-            for(Product p : listOfItemsToBuy) {
+            for (Product p : listOfItemsToBuy) {
                 productManager.removeAmountOfProduct(p);
             }
             generateInvoice();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
+
     public void generateInvoice() {
         DataController.saveNewOrder(order);
         DataController.saveProducts(productManager.getProductList());
@@ -63,21 +65,22 @@ public class OrderProcessor extends Thread {
         System.out.println("Godzina zamówienia: ");
         System.out.println(localDateTime.getDayOfMonth() + "-"
                 + localDateTime.getMonthValue() + "-"
-                + localDateTime.getYear()+ " "
+                + localDateTime.getYear() + " "
                 + localDateTime.getHour() + ":"
-                + localDateTime.getMinute()+ ":"
+                + localDateTime.getMinute() + ":"
                 + localDateTime.getSecond() + " "
                 + "UTC " + offset);
         System.out.println("Klient:");
         System.out.println(order.getPerson().toString());
         System.out.println("Zamówienie:");
-        for(Product p : order.getProductList()) {
+        for (Product p : order.getProductList()) {
             System.out.println(p.toString());
         }
         System.out.println("Cena całkowita: ");
         System.out.println(order.getAmount());
         System.out.println();
     }
+
     @Override
     public void run() {
         processOrder();

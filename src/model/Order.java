@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -12,6 +12,7 @@ public class Order {
     private float amount;
     private Date date;
     private String gmt;
+
     public Order(Person person, List<Product> productList, LocalDateTime dateTime) {
         this.person = person;
         this.productList = productList;
@@ -21,9 +22,10 @@ public class Order {
         this.gmt = zonedDateTime.getOffset().toString();
         calculateAmount();
     }
+
     private void calculateAmount() {
         amount = 0;
-        for(Product p : productList) {
+        for (Product p : productList) {
             amount += p.getAmount() * p.getPrice();
         }
     }

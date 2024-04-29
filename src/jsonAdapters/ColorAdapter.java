@@ -1,4 +1,4 @@
-package JsonAdapters;
+package jsonAdapters;
 
 import com.google.gson.*;
 
@@ -20,9 +20,9 @@ public class ColorAdapter implements JsonSerializer<Color>, JsonDeserializer<Col
     @Override
     public JsonElement serialize(Color color, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("color_red",color.getRed());
-        jsonObject.addProperty("color_green",color.getGreen());
-        jsonObject.addProperty("color_blue",color.getBlue());
+        jsonObject.addProperty("color_red", color.getRed());
+        jsonObject.addProperty("color_green", color.getGreen());
+        jsonObject.addProperty("color_blue", color.getBlue());
         return jsonObject;
     }
 }

@@ -209,7 +209,7 @@ Wątek odpowiedzialny za wykonanie złożonego zamówienia
     <td>Funkcja odpowiedzialna za uruchomienie wątku</td>
   </tr>
 </table>
-<h2>Data</h2>
+<h2>data</h2>
 Folder zawiera pliki JSON aplikacji<br><br>
 <table>
   <tr>
@@ -233,7 +233,7 @@ Folder zawiera pliki JSON aplikacji<br><br>
     <td>zbiór użytkowników w bazie aplikacji</td>
   </tr>
 </table>
-<h2>Enums</h2>
+<h2>enums</h2>
 Folder zawiera wszystkie enumy wykorzystane w aplikacji<br><br>
 <table>
   <tr>
@@ -253,7 +253,7 @@ Folder zawiera wszystkie enumy wykorzystane w aplikacji<br><br>
     <td>informuje o aktualnym trybie działania aplikacji</td>
   </tr>
 </table>
-<h2>JsonAdapters</h2>
+<h2>jsonAdapters</h2>
 Folder zawierający adaptery pomiędzy głównymi obiektami aplikacji, a plikami JSON<br><br>
 <table>
   <tr>
@@ -280,7 +280,7 @@ Folder zawierający adaptery pomiędzy głównymi obiektami aplikacji, a plikami
 <h2>Models</h2>
 Folder zawierający wszystkie modele użyte w aplikacji
 <h3>Cart</h3>
-Model zawierający zbiór produktów do kupna
+model zawierający zbiór produktów do kupna
 <table>
   <tr>
     <th>Typ pola</th>
@@ -292,7 +292,7 @@ Model zawierający zbiór produktów do kupna
   </tr>
 </table>
 <h3>Computer</h3>
-Model opisujący specjalny produkt zawierający 7 różnych części zamiennych.<br> 
+model opisujący specjalny produkt zawierający 7 różnych części zamiennych.<br> 
 Ze względu na obszerną ilość zmiennych, do modelu został zaimplementowany builder
 <table>
   <tr>
@@ -345,7 +345,7 @@ Ze względu na obszerną ilość zmiennych, do modelu został zaimplementowany b
   </tr>
 </table>
 <h3>Electronics</h3>
-Model dziedziczący po produkcie nie posiadający dodatkowych funkcji
+model dziedziczący po produkcie nie posiadający dodatkowych funkcji
 <table>
   <tr>
     <th>Typ pola</th>
@@ -369,7 +369,7 @@ Model dziedziczący po produkcie nie posiadający dodatkowych funkcji
   </tr>
 </table>
 <h3>Order</h3>
-Model służący do przechowywania wszystkich informacji o zamówieniu.
+model służący do przechowywania wszystkich informacji o zamówieniu.
 <table>
   <tr>
     <th>Typ pola</th>
@@ -397,7 +397,7 @@ Model służący do przechowywania wszystkich informacji o zamówieniu.
   </tr>
 </table>
 <h3>Person</h3>
-Model zawierający informacje o konkretnym użytkowniku
+model zawierający informacje o konkretnym użytkowniku
 <table>
   <tr>
     <th>Typ pola</th>
@@ -421,7 +421,7 @@ Model zawierający informacje o konkretnym użytkowniku
   </tr>
 </table>
 <h3>Procuct</h3>
-Model zawierający informacje o podstawowym produkcie dostępnym w sklepie
+model zawierający informacje o podstawowym produkcie dostępnym w sklepie
 <table>
   <tr>
     <th>Typ pola</th>
@@ -445,7 +445,7 @@ Model zawierający informacje o podstawowym produkcie dostępnym w sklepie
   </tr>
 </table>
 <h3>ProductEnum</h3>
-Model zawierający identyfikatory konkretnych części Komputera lub Smartfona
+model zawierający identyfikatory konkretnych części Komputera lub Smartfona
 <table>
   <tr>
     <th>Typ pola</th>
@@ -465,7 +465,7 @@ Model zawierający identyfikatory konkretnych części Komputera lub Smartfona
   </tr>
 </table>
 <h3>ProductManager</h3>
-Model zawierający wszystkie przedmioty umieszczone w sklepie.<br>
+model zawierający wszystkie przedmioty umieszczone w sklepie.<br>
 Zawarto w nim CRUD do listy produktów. <br>
 Zawiera 2 hashMap-y przechowujące informacje o indeksach zamiennych części do komputerów oraz telefonów
 <table>
@@ -487,7 +487,7 @@ Zawiera 2 hashMap-y przechowujące informacje o indeksach zamiennych części do
   </tr>
 </table>
 <h3>Smartphone</h3>
-Model opisujący specjalny produkt zawierający 3 zmienne części (Kolor, pojemność baterii oraz Etui)
+model opisujący specjalny produkt zawierający 3 zmienne części (Kolor, pojemność baterii oraz Etui)
 <table>
   <tr>
     <th>Typ pola</th>

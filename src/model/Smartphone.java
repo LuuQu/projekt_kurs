@@ -1,9 +1,9 @@
-package Model;
+package model;
 
 import java.awt.*;
 import java.util.List;
 
-public class Smartphone extends Electronics{
+public class Smartphone extends Electronics {
     private Color color;
     private int batteryCapacity;
     private Product phoneCase;
@@ -14,6 +14,7 @@ public class Smartphone extends Electronics{
         this.batteryCapacity = batteryCapacity;
         this.phoneCase = phoneCase;
     }
+
     public Smartphone(int id, String name, float price, int amount) {
         super(id, name, price, amount);
     }
@@ -29,11 +30,13 @@ public class Smartphone extends Electronics{
     public Color getColor() {
         return color;
     }
+
     public String printColor() {
         return "Czerwony -> " + color.getRed()
                 + ", Zielony -> " + color.getGreen()
                 + ", Niebieski -> " + color.getBlue();
     }
+
     @Override
     public Smartphone copy() {
         return new Smartphone(this.getId(),
@@ -44,6 +47,7 @@ public class Smartphone extends Electronics{
                 this.batteryCapacity,
                 this.phoneCase);
     }
+
     @Override
     public java.util.List<Product> addProductToList(List<Product> list) {
         phoneCase.setAmount(1);
@@ -51,6 +55,7 @@ public class Smartphone extends Electronics{
         phoneCase.addProductToList(list);
         return list;
     }
+
     public void setColor(Color color) {
         this.color = color;
     }
