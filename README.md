@@ -209,7 +209,7 @@ Wątek odpowiedzialny za wykonanie złożonego zamówienia
     <td>Funkcja odpowiedzialna za uruchomienie wątku</td>
   </tr>
 </table>
-<h2>data</h2>
+<h2>Data</h2>
 Folder zawiera pliki JSON aplikacji<br><br>
 <table>
   <tr>
@@ -233,7 +233,7 @@ Folder zawiera pliki JSON aplikacji<br><br>
     <td>zbiór użytkowników w bazie aplikacji</td>
   </tr>
 </table>
-<h2>enums</h2>
+<h2>Enums</h2>
 Folder zawiera wszystkie enumy wykorzystane w aplikacji<br><br>
 <table>
   <tr>
@@ -253,7 +253,7 @@ Folder zawiera wszystkie enumy wykorzystane w aplikacji<br><br>
     <td>informuje o aktualnym trybie działania aplikacji</td>
   </tr>
 </table>
-<h2>jsonAdapters</h2>
+<h2>JsonAdapters</h2>
 Folder zawierający adaptery pomiędzy głównymi obiektami aplikacji, a plikami JSON<br><br>
 <table>
   <tr>
